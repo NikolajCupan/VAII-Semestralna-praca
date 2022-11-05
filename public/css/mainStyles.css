@@ -1,0 +1,153 @@
+:root {
+    --farbaOddelovacov: #676767;
+    --farbaPozadia: #ffffff;
+}
+
+html body {
+    background-color: var(--farbaPozadia);
+}
+
+.pasik {
+    background-color: var(--farbaOddelovacov);
+    height: 50px;
+}
+
+.container-fluid {
+    padding: 0 !important;
+}
+
+.prechodDo {
+    background-image: linear-gradient(var(--farbaOddelovacov), var(--farbaPozadia));
+    height: 20px;
+}
+
+.prechodZ {
+    background-image: linear-gradient(var(--farbaPozadia), var(--farbaOddelovacov));
+    height: 20px;
+}
+
+.row.text {
+    text-align: justify;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.hrubyText {
+    font-weight: bold;
+}
+
+.nadpisVelky {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.tlacidlo {
+    border-radius: 0 !important;
+}
+
+.uspech {
+    text-align: left;
+    border: solid 1px black;
+    background-color: var(--farbaOddelovacov);
+    color: black;
+    margin-top: 10px;
+}
+
+.fotka {
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.fotkaMala {
+    width: 25%;
+    height: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.text {
+    text-indent: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+
+/* medzery */
+.medzeraVelka {
+    margin-top: 100px;
+}
+
+.medzeraStredna {
+    margin-top: 50px;
+}
+
+.medzeraMala {
+    margin-top: 20px;
+}
+/* koniec medzery */
+
+
+/* horne menu */
+.logo {
+    width: 40px;
+    position: absolute;
+    left: 20px;
+    top: 5px;
+}
+
+.menuLave {
+    position: absolute;
+    left: 70px;
+    top: 5px;
+}
+
+.maleMenu {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.menuLave .nav .nav-item a, .maleMenu .nav .nav-item a {
+    color: white;
+    font-weight: bold;
+}
+
+.menuLave .nav .nav-item a:hover, .maleMenu .nav .nav-item a:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.menuPrave, .maleMenu {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.menuPrave .nav .nav-item a, .maleMenu .nav .nav-item a {
+    color: white;
+    font-weight: bold;
+}
+
+.menuPrave .nav .nav-item a:hover, .maleMenu .nav .nav-item a:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.menuPrave .nav .nav-item .dropdown-menu, .maleMenu .nav .nav-item .dropdown-menu {
+    background-color: var(--farbaOddelovacov);
+}
+
+.menuPrave .nav .nav-item .dropdown-menu li a:hover, .maleMenu .nav .nav-item .dropdown-menu li a:hover {
+    background-color: var(--farbaOddelovacov);
+    color: black;
+}
+/* koniec horne menu */

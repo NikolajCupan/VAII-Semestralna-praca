@@ -1,0 +1,66 @@
+.policko {
+    height: 300px;
+    border: solid 1px black;
+    color: black;
+}
+
+.hlavnyRam {
+    border: solid 1px black;
+}
+
+@media only screen and (min-width: 992px) {
+    .topLeft {
+        border-bottom: solid 1px black;
+        border-right: solid 1px black;
+    }
+
+    .topRight {
+        border-bottom: solid 1px black;
+    }
+
+    .bottomLeft {
+        border-right: solid 1px black;
+    }
+}
+
+@media (max-width: 992px) {
+    .borderSmall {
+        border-bottom: solid 1px black;
+    }
+}
+
+.fotkaKontakt {
+    width: 30%;
+    height: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.textOsoba {
+    margin-bottom: 10px;
+}
+
+.oOsobe {
+    text-align: justify;
+    text-indent: 30px;
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+}
+
+.navbar-custom .navbar-brand, .navbar-custom .navbar-text {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-bottom: solid 1px black;
+}
+
+.navbar-custom .navbar-brand:hover, .navbar-custom .navbar-text:hover {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
