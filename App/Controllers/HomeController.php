@@ -26,7 +26,7 @@ class HomeController extends AControllerBase
      * Example of an action (authorization needed)
      * @return \App\Core\Responses\Response|\App\Core\Responses\ViewResponse
      */
-    public function index(): Response
+    public function index() : Response
     {
         return $this->html();
     }
@@ -35,7 +35,17 @@ class HomeController extends AControllerBase
      * Example of an action accessible without authorization
      * @return \App\Core\Responses\ViewResponse
      */
-    public function contact(): Response
+    public function contact() : Response
+    {
+        return $this->html();
+    }
+
+    public function about() : Response
+    {
+        return $this->html();
+    }
+
+    public function help() : Response
     {
         return $this->html();
     }
