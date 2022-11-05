@@ -50,6 +50,10 @@
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                 <form class="form-signin" method="post" action="<?= \App\Config\Configuration::LOGIN_URL ?>">
 
+                    <div class="text-center text-danger mb-3">
+                        <?= @$data['message'] ?>
+                    </div>
+
                     <div class="form-outline mb-4">
                         <label class="form-label" for="login">Zadajte meno</label>
                         <input type="text" id="login" class="form-control form-control-lg" name="login" required autofocus>
@@ -63,20 +67,13 @@
                     <div class="container text-center">
                         <div class="row">
                             <div class="col">
-                                <button class="btn btn-outline-dark col btn-lg btn-block" type="submit" name="submit" role="button">Prihlásiť sa</button>
+                                <button class="loginTlacidlo btn btn-outline-dark col btn-lg btn-block" type="submit" name="submit" role="button">Prihlásiť</button>
                             </div>
-                            <div class="text-center text-danger mb-3">
-                                <?= @$data['message'] ?>
+                            <div class="col">
+                                <a href="?c=home" class="loginTlacidlo btn btn-outline-dark col btn-lg btn-block" role="button">Domov</a>
                             </div>
                         </div>
                     </div>
-
-                    <!--
-                    <div class="text-center text-danger mb-3">
-                        <button class="btn btn-outline-dark col btn-lg btn-block" type="submit" name="submit" role="button">Prihlásiť sa</button>
-                        <?= @$data['message'] ?>
-                    </div>
-                    -->
 
                 </form>
             </div>
