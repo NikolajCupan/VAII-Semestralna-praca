@@ -9,6 +9,23 @@ class User extends Model
     protected $id;
     protected $username;
     protected $password;
+    protected $role;
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role): void
+    {
+        $this->role = $role;
+    }
 
     /**
      * @return mixed

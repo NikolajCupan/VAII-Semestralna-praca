@@ -4,39 +4,31 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Models\User;
 
-/**
- * Class HomeController
- * Example class of a controller
- * @package App\Controllers
- */
 class AdminController extends AControllerBase
 {
-    /**
-     * Authorize controller actions
-     * @param $action
-     * @return bool
-     */
     public function authorize($action)
     {
-        return $this->app->getAuth()->isLogged();
+        if (!$this->app->getAuth()->isLogged())
+        {
+            return false;
+        }
+
+        $id = $this->app->getAuth()->getLoggedUserId();
+        $userRole = User::getOne($id)->getRole();
+
+        if ($userRole == "a")
+        {
+            return true;
+        }
+
+        return false;
     }
 
-    /**
-     * Example of an action (authorization needed)
-     * @return \App\Core\Responses\Response|\App\Core\Responses\ViewResponse
-     */
-    public function index(): Response
+    public function index() : Response
     {
-        return $this->html();
-    }
-
-    /**
-     * Example of an action accessible without authorization
-     * @return \App\Core\Responses\ViewResponse
-     */
-    public function contact(): Response
-    {
-        return $this->html();
+        $data = User::getAll();
+        return $this->html($data);
     }
 }

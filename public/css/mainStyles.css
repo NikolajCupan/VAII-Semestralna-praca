@@ -116,12 +116,12 @@ html body {
     top: 10px;
 }
 
-.menuLave .nav .nav-item a, .maleMenu .nav .nav-item a {
+.menuLave .nav .nav-item a, .maleMenu .nav .nav-item a, .menuPrave .nav .nav-item a, .maleMenu .nav .nav-item a {
     color: white;
     font-weight: bold;
 }
 
-.menuLave .nav .nav-item a:hover, .maleMenu .nav .nav-item a:hover {
+.menuLave .nav .nav-item a:hover, .maleMenu .nav .nav-item a:hover, .menuPrave .nav .nav-item a:hover, .maleMenu .nav .nav-item a:hover {
     color: black;
     font-weight: bold;
 }
@@ -130,16 +130,6 @@ html body {
     position: absolute;
     right: 10px;
     top: 5px;
-}
-
-.menuPrave .nav .nav-item a, .maleMenu .nav .nav-item a {
-    color: white;
-    font-weight: bold;
-}
-
-.menuPrave .nav .nav-item a:hover, .maleMenu .nav .nav-item a:hover {
-    color: black;
-    font-weight: bold;
 }
 
 .menuPrave .nav .nav-item .dropdown-menu, .maleMenu .nav .nav-item .dropdown-menu {

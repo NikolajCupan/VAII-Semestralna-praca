@@ -70,14 +70,32 @@ class App
             } else {
                 throw new \Exception("Action {$this->router->getFullControllerName()}::{$this->router->getAction()} didn't return an instance of Response.");
             }
-        } else {
-            if ($this->auth->isLogged() or !defined('\\App\\Config\\Configuration::LOGIN_URL')) {
+        }
+        else
+        {
+            if (!defined('\\App\\Config\\Configuration::LOGIN_URL'))
+            {
                 http_response_code(403);
                 echo '<h1>403 Forbidden</h1>';
-            } else {
-                (new RedirectResponse(Configuration::LOGIN_URL))->generate();
-
             }
+            else if ($this->auth->isLogged())
+            {
+                (new RedirectResponse("?c=home"))->generate();
+            }
+            else
+            {
+                (new RedirectResponse(Configuration::LOGIN_URL))->generate();
+            }
+
+//            if ($this->auth->isLogged() or !defined('\\App\\Config\\Configuration::LOGIN_URL'))
+//            {
+//                http_response_code(403);
+//                echo '<h1>403 Forbidden</h1>';
+//            }
+//            else
+//            {
+//                (new RedirectResponse(Configuration::LOGIN_URL))->generate();
+//            }
         }
 
         // if SQL debugging in configuration is allowed, display all SQL queries

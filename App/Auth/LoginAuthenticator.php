@@ -34,4 +34,15 @@ class LoginAuthenticator extends DummyAuthenticator
 
         return false;
     }
+
+    function getLoggedUserRole() : mixed
+    {
+        $id = $this->getLoggedUserId();
+
+        if ($id) {
+            return User::getOne($id)->getRole();
+        }
+
+        return null;
+    }
 }

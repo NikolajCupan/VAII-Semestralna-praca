@@ -3,6 +3,7 @@
 namespace App\Auth;
 
 use App\Core\IAuthenticator;
+use App\Models\User;
 
 /**
  * Class DummyAuthenticator
@@ -57,7 +58,6 @@ class DummyAuthenticator implements IAuthenticator
      */
     function getLoggedUserName(): string
     {
-
         return isset($_SESSION['user']) ? $_SESSION['user'] : throw new \Exception("User not logged in");
     }
 
@@ -85,6 +85,20 @@ class DummyAuthenticator implements IAuthenticator
      */
     function getLoggedUserId(): mixed
     {
-        return $_SESSION['user'];
+        if (isset($_SESSION['user']))
+        {
+            $allUsers = User::getAll();
+            $currentUser = $_SESSION['user'];
+
+            foreach ($allUsers as $user)
+            {
+                if ($user->getUsername() == $currentUser)
+                {
+                    return $user->getId();
+                }
+            }
+        }
+
+        return null;
     }
 }

@@ -44,13 +44,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="?c=articles">Články</a>
                     </li>
+
+                    <?php /** @var \App\Auth\LoginAuthenticator $auth */
+                    if ($auth->getLoggedUserRole() == "a") { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?c=admin">Administrácia</a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
 
             <?php
             /** @var \App\Core\IAuthenticator $auth */
-            if (!$auth->isLogged()) {
-            ?>
+            if (!$auth->isLogged()) { ?>
                 <div class="menuPrave d-none d-sm-block">
                     <ul class="nav">
                         <li class="nav-item dropdown">
@@ -67,8 +73,12 @@
             <?php } else { ?>
                 <div class="menuPrave d-none d-sm-block">
                     <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="?c=auth&a=logout">Odhlásenie</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pouzivatel: <?= $auth->getLoggedUserName() ?></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="?c=user&a=profile">Profil</a></li>
+                                <li><a class="dropdown-item" href="?c=auth&a=logout">Odhlásenie</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -77,16 +87,37 @@
             <div class="maleMenu d-xs-block d-sm-none">
                 <ul class="nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
+                        <?php if ($auth->isLogged()) { ?>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pouzivatel: <?= $auth->getLoggedUserName() ?></a>
+                        <?php } else { ?>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
+                        <?php } ?>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="?c=home&a=contact">Kontakt</a></li>
                             <li><a class="dropdown-item" href="?c=home&a=about">O nás</a></li>
                             <li><a class="dropdown-item" href="?c=articles">Články</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a></li>
-                            <li><a class="dropdown-item" href="?c=auth&a=register">Registrácia</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="?c=home&a=help">Help</a></li>
+
+                            <?php
+                            /** @var \App\Core\IAuthenticator $auth */
+                            if (!$auth->isLogged()) { ?>
+                                <li><a class="dropdown-item" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a></li>
+                                <li><a class="dropdown-item" href="?c=auth&a=register">Registrácia</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="?c=home&a=help">Help</a></li>
+                            <?php } else { ?>
+                                <li><a class="dropdown-item" href="?c=user&a=profile">Profil</a></li>
+                                <li><a class="nav-link" href="?c=auth&a=logout">Odhlásenie</a></li>
+                            <?php } ?>
+
+                            <?php
+                            /** @var \App\Core\IAuthenticator $auth */
+                            if ($auth->getLoggedUserRole() == "a") { ?>
+                                <li><hr class="dropdown-divider"></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="?c=admin">Administrácia</a>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </li>
                 </ul>
