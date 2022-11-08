@@ -22,3 +22,9 @@
 .loginTlacidlo {
     margin-bottom: 10px;
 }
+
+.ramik {
+    border-radius: 0;
+    border-color: black;
+    border-width: thin;
+}

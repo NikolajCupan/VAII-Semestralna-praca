@@ -23,12 +23,22 @@ class AuthController extends AControllerBase
         return $this->redirect(Configuration::LOGIN_URL);
     }
 
+    public function success() : Response
+    {
+        return $this->html();
+    }
+
     /**
      * Login an user
      * @return \App\Core\Responses\RedirectResponse|\App\Core\Responses\ViewResponse
      */
     public function login() : Response
     {
+        if ($this->app->getAuth()->isLogged())
+        {
+            return $this->redirect("?c=home");
+        }
+
         $formData = $this->app->getRequest()->getPost();
         $logged = null;
         if (isset($formData['submit'])) {
@@ -38,7 +48,7 @@ class AuthController extends AControllerBase
             }
         }
 
-        $data = ($logged === false ? ['message' => 'Zlý login alebo heslo!'] : []);
+        $data = ($logged === false ? ['message' => 'Zlé prihlasovanie údaje!'] : []);
         return $this->html($data, 'login');
     }
 
@@ -54,6 +64,46 @@ class AuthController extends AControllerBase
 
     public function register() : Response
     {
-        return $this->html();
+        if ($this->app->getAuth()->isLogged())
+        {
+            return $this->redirect("?c=home");
+        }
+
+        $formData = $this->app->getRequest()->getPost();
+        $returnValue = null;
+        if (isset($formData['submit'])) {
+            $returnValue = $this->app->getAuth()->register($formData['login'], $formData['email'], $formData['password'], $formData['passwordVerify']);
+        }
+
+        if (isset($returnValue) && $returnValue == 0)
+        {
+            $newUser = new User();
+            $newUser->setUsername($this->request()->getValue('login'));
+            $newUser->setPassword(password_hash($this->request()->getValue('password'), PASSWORD_BCRYPT));
+            $newUser->setEmail($this->request()->getValue('email'));
+            $newUser->setRole('u');
+
+            $newUser->save();
+            return $this->redirect("?c=auth&a=success");
+        }
+
+        $data = [];
+        switch ($returnValue)
+        {
+            case 1:
+                $data = ['message' => 'Meno je uz pouzite!'];
+                break;
+            case 2:
+                $data = ['message' => 'E-mail je uz pouzity!'];
+                break;
+            case 3:
+                $data = ['message' => 'Hesla sa nezhoduju'];
+                break;
+            case 4:
+                $data = ['message' => 'Heslo musi mat aspon 6 znakov a obsahovat cislo'];
+                break;
+        }
+
+        return $this->html($data, 'register');
     }
 }

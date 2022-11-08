@@ -80,6 +80,29 @@ html body {
     text-align: justify;
 }
 
+.pata {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.pouzivatel {
+    width: 50%;
+    margin: 0 auto 20px;
+}
+
+.deleteUser {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.modifyUser {
+    color: #000000;
+    text-decoration: none;
+    margin: auto;
+    width: 50%;
+}
+
 
 /* medzery */
 .medzeraVelka {

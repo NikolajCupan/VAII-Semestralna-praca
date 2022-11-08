@@ -10,6 +10,23 @@ class User extends Model
     protected $username;
     protected $password;
     protected $role;
+    protected $email;
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
+    {
+        $this->email = $email;
+    }
 
     /**
      * @return mixed

@@ -134,8 +134,10 @@
             </div>
         </div>
 
-        <div class="medzeraMala"></div>
-        <div class="prechodZ"></div>
-        <div class="pasik"></div>
+        <div class="pata">
+            <div class="medzeraMala"></div>
+            <div class="prechodZ"></div>
+            <div class="pasik"></div>
+        </div>
     </body>
 </html>

@@ -31,4 +31,24 @@ class AdminController extends AControllerBase
         $data = User::getAll();
         return $this->html($data);
     }
+
+    public function delete()
+    {
+        $id = $this->request()->getValue('id');
+        $loggedUserId = $this->app->getAuth()->getLoggedUserId();
+
+        $userToDelete = User::getOne($id);
+
+        if ($userToDelete && ($id != $loggedUserId))
+        {
+            $userToDelete->delete();
+        }
+
+        return $this->redirect("?c=admin");
+    }
+
+    public function modify()
+    {
+
+    }
 }
