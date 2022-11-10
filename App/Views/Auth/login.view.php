@@ -32,7 +32,7 @@
                     <div class="container text-center">
                         <div class="row">
                             <div class="col">
-                                <button class="loginTlacidlo btn btn-outline-dark col btn-lg btn-block" type="submit" name="submit" role="button">Prihlásiť</button>
+                                <button class="loginTlacidlo btn btn-outline-dark col btn-lg btn-block" type="submit" name="submit">Prihlásiť</button>
                             </div>
                             <div class="col">
                                 <a href="?c=home" class="loginTlacidlo btn btn-outline-dark col btn-lg btn-block" role="button">Domov</a>

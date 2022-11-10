@@ -19,6 +19,6 @@ $layout = 'auth';
     <div class="odpocetRiadok">
         <p>Budete presmerovaný</p>
         <p>na domovskú stránku</p>
-        <p>za&nbsp;<p id="odpocet">5</p></p>
+        <p>za&nbsp;</p><p id="odpocet">5</p>
     </div>
 </div>

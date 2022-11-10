@@ -53,9 +53,9 @@ use App\Models\User;
 
                     <div class="inline-block-child">
                         <?php if ($user->getId() != $auth->getLoggedUserId()) { ?>
-                            <input type="submit" value="Potvrdit" class="submitTlacidlo btn btn-outline-dark col btn-md btn-block" role="button">
+                            <input type="submit" value="Potvrdit" class="submitTlacidlo btn btn-outline-dark col btn-md btn-block">
                         <?php } else { ?>
-                            <input disabled type="submit" value="Potvrdit" class="submitTlacidlo btn btn-outline-dark col btn-md btn-block" role="button">
+                            <input disabled type="submit" value="Potvrdit" class="submitTlacidlo btn btn-outline-dark col btn-md btn-block">
                         <?php } ?>
                     </div>
                 </div>
