@@ -16,12 +16,12 @@
                 <form class="form-signin" method="post" action="<?= \App\Config\Configuration::LOGIN_URL ?>">
 
                     <div class="text-center text-danger mb-3">
-                        <?= @$data['message'] ?>
+                        <p><?= @$data['message'] ?>&nbsp;</p>
                     </div>
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="login">Zadajte meno</label>
-                        <input type="text" id="login" class="form-control form-control-lg" name="login" required autofocus>
+                        <input value="<?php echo isset($_POST['login']) ? htmlspecialchars($_POST['login'], ENT_QUOTES) : ''; ?>" type="text" id="login" class="form-control form-control-lg" name="login" required autofocus>
                     </div>
 
                     <div class="form-outline mb-4">

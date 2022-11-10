@@ -5,6 +5,7 @@ namespace App\Auth;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\User;
+use App\App;
 
 class LoginAuthenticator extends DummyAuthenticator
 {
@@ -37,9 +38,15 @@ class LoginAuthenticator extends DummyAuthenticator
 
     function getLoggedUserRole() : mixed
     {
+        if (!$this->isLogged())
+        {
+            return null;
+        }
+
         $id = $this->getLoggedUserId();
 
-        if ($id) {
+        if ($id)
+        {
             return User::getOne($id)->getRole();
         }
 
@@ -53,12 +60,15 @@ class LoginAuthenticator extends DummyAuthenticator
      * 2 -> e-mail je uz pouzity
      * 3 -> hesla sa nezhoduju
      * 4 -> heslo je prilis jednoduche
+     * 5 -> meno je prilis dlhe
+     * 6 -> email je prilis dlhy
+     * 7 -> heslo je prilis dlhe
      */
     public function register($login, $email, $password, $passwordVerify) : int
     {
         $allUsers = User::getAll();
 
-        foreach($allUsers as $user)
+        foreach ($allUsers as $user)
         {
             if ($user->getUsername() == $login)
             {
@@ -76,8 +86,24 @@ class LoginAuthenticator extends DummyAuthenticator
             return 3;
         }
 
-        if (!preg_match('~[0-9]+~', $password) || strlen($password) < 6) {
+        if (!preg_match('~[0-9]+~', $password) || strlen($password) < 6)
+        {
             return 4;
+        }
+
+        if (strlen($login) > 30)
+        {
+            return 5;
+        }
+
+        if (strlen($email) > 75)
+        {
+            return 6;
+        }
+
+        if (strlen($password) > 50)
+        {
+            return 7;
         }
 
         return 0;
@@ -85,6 +111,11 @@ class LoginAuthenticator extends DummyAuthenticator
 
     public function getAbbreviatedLoggedUserName() : mixed
     {
+        if (!$this->isLogged())
+        {
+            return null;
+        }
+
         $name = $this->getLoggedUserName();
 
         if (strlen($name) <= 5)

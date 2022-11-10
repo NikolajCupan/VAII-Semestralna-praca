@@ -20,14 +20,14 @@
                                 <form class="form-signup" method="post" action="?c=auth&a=register">
 
                                     <div class="text-center text-danger mb-3">
-                                        <?= @$data['message'] ?>
+                                        <p><?= @$data['message'] ?>&nbsp;</p>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label" for="login">Meno</label>
-                                            <input type="text" id="login" class="form-control" name="login" required autofocus/>
+                                            <input value="<?php echo isset($_POST['login']) ? htmlspecialchars($_POST['login'], ENT_QUOTES) : ''; ?>" type="text" id="login" class="form-control" name="login" required autofocus/>
                                         </div>
                                     </div>
 
@@ -35,7 +35,7 @@
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label" for="email">E-mail</label>
-                                            <input type="email" id="email" class="form-control" name="email" required/>
+                                            <input value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : ''; ?>" type="email" id="email" class="form-control" name="email" required/>
                                         </div>
                                     </div>
 

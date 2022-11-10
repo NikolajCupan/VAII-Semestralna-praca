@@ -71,7 +71,8 @@ class AuthController extends AControllerBase
 
         $formData = $this->app->getRequest()->getPost();
         $returnValue = null;
-        if (isset($formData['submit'])) {
+        if (isset($formData['submit']))
+        {
             $returnValue = $this->app->getAuth()->register($formData['login'], $formData['email'], $formData['password'], $formData['passwordVerify']);
         }
 
@@ -101,6 +102,15 @@ class AuthController extends AControllerBase
                 break;
             case 4:
                 $data = ['message' => 'Heslo musi mat aspon 6 znakov a obsahovat cislo'];
+                break;
+            case 5:
+                $data = ['message' => 'Meno moze mat maximalne 30 znakov'];
+                break;
+            case 6:
+                $data = ['message' => 'Email moze mat maximalne 75 znakov'];
+                break;
+            case 7:
+                $data = ['message' => 'Heslo moze mat maximalne 50 znakov'];
                 break;
         }
 
