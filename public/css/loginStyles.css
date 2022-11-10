@@ -28,3 +28,7 @@
     border-color: black;
     border-width: thin;
 }
+
+.inputPolicko {
+    padding-left: 0;
+}
