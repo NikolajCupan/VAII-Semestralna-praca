@@ -33,7 +33,7 @@
                 <img class="logo" src="../../public/images/logo.png" alt="logo">
             </a>
 
-            <div class="menuLave d-none d-sm-block">
+            <div class="menuLave d-none d-md-block">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="?c=home&a=contact">Kontakt</a>
@@ -57,7 +57,7 @@
             <?php
             /** @var \App\Core\IAuthenticator $auth */
             if (!$auth->isLogged()) { ?>
-                <div class="menuPrave d-none d-sm-block">
+                <div class="menuPrave d-none d-md-block">
                     <ul class="nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pouzivatel</a>
@@ -71,7 +71,7 @@
                     </ul>
                 </div>
             <?php } else { ?>
-                <div class="menuPrave d-none d-sm-block">
+                <div class="menuPrave d-none d-md-block">
                     <ul class="nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pouzivatel: <?= $auth->getLoggedUserName() ?></a>
@@ -84,14 +84,15 @@
                 </div>
             <?php } ?>
 
-            <div class="maleMenu d-xs-block d-sm-none">
+            <div class="maleMenu d-sm-block d-md-none">
                 <ul class="nav">
                     <li class="nav-item dropdown">
                         <?php if ($auth->isLogged()) { ?>
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pouzivatel: <?= $auth->getLoggedUserName() ?></a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pouzivatel: <?= $auth->getAbbreviatedLoggedUserName() ?></a>
                         <?php } else { ?>
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
                         <?php } ?>
+
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="?c=home&a=contact">Kontakt</a></li>
                             <li><a class="dropdown-item" href="?c=home&a=about">O nás</a></li>
@@ -134,10 +135,8 @@
             </div>
         </div>
 
-        <div class="pata">
-            <div class="medzeraMala"></div>
-            <div class="prechodZ"></div>
-            <div class="pasik"></div>
-        </div>
+        <div class="medzeraMala"></div>
+        <div class="prechodZ"></div>
+        <div class="pasik"></div>
     </body>
 </html>

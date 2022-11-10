@@ -82,4 +82,18 @@ class LoginAuthenticator extends DummyAuthenticator
 
         return 0;
     }
+
+    public function getAbbreviatedLoggedUserName() : mixed
+    {
+        $name = $this->getLoggedUserName();
+
+        if (strlen($name) <= 5)
+        {
+            return $name;
+        }
+        else
+        {
+            return substr($name, 0, 5) . "...";
+        }
+    }
 }

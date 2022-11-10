@@ -49,6 +49,21 @@ class AdminController extends AControllerBase
 
     public function modify()
     {
+        $rola = $this->request()->getValue('rola');
+        $id = $this->request()->getValue('id');
+        $loggedUserId = $this->app->getAuth()->getLoggedUserId();
 
+        if (isset($id) && isset($loggedUserId) && ($id != $loggedUserId))
+        {
+            $user = User::getOne($id);
+
+            if (isset($user))
+            {
+                $user->setRole($rola);
+                $user->save();
+            }
+        }
+
+        return $this->redirect("?c=admin");
     }
 }

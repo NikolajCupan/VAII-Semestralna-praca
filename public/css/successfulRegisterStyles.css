@@ -39,3 +39,8 @@ i {
     background: #F8FAF5;
     margin: 0 auto;
 }
+
+.odpocetRiadok p {
+    display: inline-block;
+    vertical-align: top;
+}

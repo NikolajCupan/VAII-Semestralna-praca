@@ -14,5 +14,11 @@ $layout = 'auth';
     </div>
 
     <h1>Úspech</h1>
-    <p>Váš účet bol úspešne vytvorený<br/>Čoskoro budete presmerovaný na domovskú stránku</p>
+    <p>Váš účet bol úspešne vytvorený</p>
+
+    <div class="odpocetRiadok">
+        <p>Budete presmerovaný</p>
+        <p>na domovskú stránku</p>
+        <p>za&nbsp;<p id="odpocet">5</p></p>
+    </div>
 </div>
