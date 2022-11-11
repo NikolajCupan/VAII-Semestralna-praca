@@ -25,6 +25,7 @@
                 integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
                 crossorigin="anonymous"></script>
         <script src="../../public/js/script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
     <body>
@@ -74,7 +75,7 @@
                 <div class="menuPrave d-none d-md-block">
                     <ul class="nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pouzivatel: <?= $auth->getLoggedUserName() ?></a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Používateľ: <?= $auth->getLoggedUserName() ?></a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="?c=user&a=profile">Profil</a></li>
                                 <li><a class="dropdown-item" href="?c=auth&a=logout">Odhlásenie</a></li>
@@ -88,7 +89,7 @@
                 <ul class="nav">
                     <li class="nav-item dropdown">
                         <?php if ($auth->isLogged()) { ?>
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pouzivatel: <?= $auth->getAbbreviatedLoggedUserName() ?></a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Používateľ: <?= $auth->getAbbreviatedLoggedUserName() ?></a>
                         <?php } else { ?>
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
                         <?php } ?>
@@ -135,8 +136,10 @@
             </div>
         </div>
 
+        <!--
         <div class="medzeraMala"></div>
         <div class="prechodZ"></div>
         <div class="pasik"></div>
+        -->
     </body>
 </html>

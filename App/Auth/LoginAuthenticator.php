@@ -117,4 +117,21 @@ class LoginAuthenticator extends DummyAuthenticator
             return substr($name, 0, 5) . "...";
         }
     }
+
+    public function getLoggedUserEmail() : mixed
+    {
+        if (!$this->isLogged())
+        {
+            return null;
+        }
+
+        $id = $this->getLoggedUserId();
+
+        if ($id)
+        {
+            return User::getOne($id)->getEmail();
+        }
+
+        return null;
+    }
 }

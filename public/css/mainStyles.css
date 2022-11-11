@@ -112,6 +112,24 @@ html body {
     margin-bottom: 0;
 }
 
+@media only screen and (max-width: 768px) {
+    .profilFotka {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .profilFotka {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.skryte {
+    visibility: hidden;
+}
+
 
 /* medzery */
 .medzeraVelka {
