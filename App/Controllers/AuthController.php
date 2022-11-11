@@ -6,6 +6,7 @@ use App\Config\Configuration;
 use App\Core\AControllerBase;
 use App\Auth\LoginAuthenticator;
 use App\Core\Responses\Response;
+use App\Helpers\RegisterErrorMessages;
 use App\Models\User;
 
 /**
@@ -73,10 +74,11 @@ class AuthController extends AControllerBase
         $returnValue = null;
         if (isset($formData['submit']))
         {
+            /** @var RegisterErrorMessages $returnValue */
             $returnValue = $this->app->getAuth()->register($formData['login'], $formData['email'], $formData['password'], $formData['passwordVerify']);
         }
 
-        if (isset($returnValue) && $returnValue == 0)
+        if (isset($returnValue) && $returnValue == RegisterErrorMessages::Correct)
         {
             $newUser = new User();
             $newUser->setUsername($this->request()->getValue('login'));
@@ -91,25 +93,25 @@ class AuthController extends AControllerBase
         $data = [];
         switch ($returnValue)
         {
-            case 1:
+            case RegisterErrorMessages::UsedName:
                 $data = ['message' => 'Meno je uz pouzite!'];
                 break;
-            case 2:
+            case RegisterErrorMessages::UsedEmail:
                 $data = ['message' => 'E-mail je uz pouzity!'];
                 break;
-            case 3:
+            case RegisterErrorMessages::DifferentPasswords:
                 $data = ['message' => 'Hesla sa nezhoduju'];
                 break;
-            case 4:
+            case RegisterErrorMessages::SimplePassword:
                 $data = ['message' => 'Heslo musi mat aspon 6 znakov a obsahovat cislo'];
                 break;
-            case 5:
+            case RegisterErrorMessages::LongName:
                 $data = ['message' => 'Meno moze mat maximalne 30 znakov'];
                 break;
-            case 6:
+            case RegisterErrorMessages::LongEmail:
                 $data = ['message' => 'Email moze mat maximalne 75 znakov'];
                 break;
-            case 7:
+            case RegisterErrorMessages::LongPassword:
                 $data = ['message' => 'Heslo moze mat maximalne 50 znakov'];
                 break;
         }

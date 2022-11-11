@@ -86,7 +86,7 @@
                                                 </div>
                                             </div>
 
-                                            <input type="password" id="password" class="form-control" name="password" required/>
+                                            <input type="password" id="password" class="form-control" name="password" required>
                                         </div>
                                     </div>
 
@@ -94,7 +94,7 @@
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label" for="passwordVerify">Potvrdenie hesla</label>
-                                            <input type="password" id="passwordVerify" class="form-control" name="passwordVerify" required/>
+                                            <input type="password" id="passwordVerify" class="form-control" name="passwordVerify" required>
                                         </div>
                                     </div>
 

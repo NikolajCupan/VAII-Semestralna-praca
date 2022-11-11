@@ -6,6 +6,7 @@ use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\User;
 use App\App;
+use App\Helpers\RegisterErrorMessages;
 
 class LoginAuthenticator extends DummyAuthenticator
 {
@@ -53,18 +54,7 @@ class LoginAuthenticator extends DummyAuthenticator
         return null;
     }
 
-    /*
-     * Navratove hodnoty:
-     * 0 -> vsetky udaje su zadane korektne
-     * 1 -> meno je uz pouzite
-     * 2 -> e-mail je uz pouzity
-     * 3 -> hesla sa nezhoduju
-     * 4 -> heslo je prilis jednoduche
-     * 5 -> meno je prilis dlhe
-     * 6 -> email je prilis dlhy
-     * 7 -> heslo je prilis dlhe
-     */
-    public function register($login, $email, $password, $passwordVerify) : int
+    public function register($login, $email, $password, $passwordVerify) : RegisterErrorMessages
     {
         $allUsers = User::getAll();
 
@@ -72,41 +62,41 @@ class LoginAuthenticator extends DummyAuthenticator
         {
             if ($user->getUsername() == $login)
             {
-                return 1;
+                return RegisterErrorMessages::UsedName;
             }
 
             if ($user->getEmail() == $email)
             {
-                return 2;
+                return RegisterErrorMessages::UsedEmail;
             }
         }
 
         if ($password != $passwordVerify)
         {
-            return 3;
+            return RegisterErrorMessages::DifferentPasswords;
         }
 
         if (!preg_match('~[0-9]+~', $password) || strlen($password) < 6)
         {
-            return 4;
+            return RegisterErrorMessages::SimplePassword;
         }
 
         if (strlen($login) > 30)
         {
-            return 5;
+            return RegisterErrorMessages::LongName;
         }
 
         if (strlen($email) > 75)
         {
-            return 6;
+            return RegisterErrorMessages::LongEmail;
         }
 
         if (strlen($password) > 50)
         {
-            return 7;
+            return RegisterErrorMessages::LongPassword;
         }
 
-        return 0;
+        return RegisterErrorMessages::Correct;
     }
 
     public function getAbbreviatedLoggedUserName() : mixed
