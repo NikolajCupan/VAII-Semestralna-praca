@@ -1,5 +1,6 @@
 <?php
     /** @var \App\Core\IAuthenticator $auth */
+    /** @var Array $data */
 ?>
 
 
@@ -11,24 +12,29 @@
     <div class="row">
         <div class="col-md-3">
             <div class="text-center">
-                <img src="../../../public/images/profilFotka.jpg" class="profilFotka img-fluid" alt="avatar">
+                <img src="../../../public/images/profilFotka.jpg" class="mb-3 profilFotka img-fluid" alt="avatar">
+                <div class="text-center text-danger mb-3">
+                    <p><?= @$data['message'] ?>&nbsp;</p>
+                </div>
             </div>
         </div>
 
         <div class="col-md-9 personal-info">
             <h3>Osobné informácie</h3>
 
-            <form class="form-horizontal" role="form">
+            <form method="post" action="?c=user&a=editProfile" class="form-horizontal" role="form">
+                <input type="hidden" name="id" value="<?php echo $auth->getLoggedUserId() ?>">
+
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Meno:</label>
                     <div class="col-lg-8">
-                        <input id="poleMeno" onchange="zmenaStylu(this.id)" class="pouzitePole mb-3 form-control" type="text" value="<?php echo $auth->getLoggedUserName() ?>">
+                        <input name="poleMeno" id="poleMeno" onchange="zmenaStylu(this.id)" class="poleVstup mb-3 form-control" type="text" value="<?php echo $auth->getLoggedUserName() ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
-                        <input id="poleEmail" onchange="zmenaStylu(this.id)" class="form-control" type="text" value="<?php echo $auth->getLoggedUserEmail() ?>">
+                        <input name="poleEmail" id="poleEmail" onchange="zmenaStylu(this.id)" class="poleVstup form-control" type="text" value="<?php echo $auth->getLoggedUserEmail() ?>">
                     </div>
                 </div>
 
@@ -44,7 +50,7 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Súčasné heslo:</label>
                     <div class="col-lg-8">
-                        <input id="poleStareHeslo" onchange="zmenaStylu(this.id)" class="mb-3 form-control" type="password" value="">
+                        <input name="poleStareHeslo" id="poleStareHeslo" onchange="zmenaStylu(this.id)" class="poleVstup mb-3 form-control" type="password" value="">
                     </div>
                 </div>
 
@@ -56,23 +62,23 @@
                         </svg>
                     </label>
                     <div class="col-md-8">
-                        <input id="poleNoveHeslo" onclick="zmenaStylu(this.id)" class="mb-3 form-control" type="password" value="">
+                        <input name="poleNoveHeslo" id="poleNoveHeslo" onchange="zmenaStylu(this.id)" onfocus="zobrazPole(this.id)" class="poleVstup mb-3 form-control" type="password" value="">
                     </div>
                 </div>
 
-                <div id="poleNoveHesloPotvrdenieKontajner" class="skryte form-group">
+                <div id="poleNoveHesloPotvrdenieKontajner" class="poleVstup skryte form-group">
                     <label class="col-md-3 control-label">Potvrdenie nového hesla:</label>
                     <div class="col-md-8">
-                        <input id="poleNoveHesloPotvrdenie" onchange="zmenaStylu(this.id)" class="mb-3 form-control" type="password" value="">
+                        <input name="poleNoveHesloPotvrdenie" id="poleNoveHesloPotvrdenie" onchange="zmenaStylu(this.id)" class="mb-3 form-control" type="password" value="">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                        <input type="button" class=" btn btn-outline-dark col btn-lg btn-block" value="Potvrdiť">
+                        <input type="submit" name="submit" class="btn btn-outline-dark col btn-lg btn-block" value="Potvrdiť">
                         <span></span>
-                        <input type="reset" class="btn btn-default" value="Zrušiť">
+                        <input onclick="obnovStranku()" type="reset" class="btn btn-default" value="Zrušiť">
                     </div>
                 </div>
             </form>
