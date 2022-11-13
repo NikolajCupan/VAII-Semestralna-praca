@@ -28,13 +28,13 @@
                 <div class="form-group">
                     <label for="poleMeno" class="col-lg-3 control-label">Meno:</label>
                     <div class="col-lg-8">
-                        <input name="poleMeno" id="poleMeno" onchange="zmenaStylu(this.id)" class="poleVstup mb-3 form-control" type="text" value="<?php echo $auth->getLoggedUserName() ?>">
+                        <input name="poleMeno" id="poleMeno" onchange="zmenaStyluProfil(this.id)" class="poleVstup mb-3 form-control" type="text" value="<?php echo $auth->getLoggedUserName() ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="poleEmail" class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
-                        <input name="poleEmail" id="poleEmail" onchange="zmenaStylu(this.id)" class="poleVstup form-control" type="email" value="<?php echo $auth->getLoggedUserEmail() ?>">
+                        <input name="poleEmail" id="poleEmail" onchange="zmenaStyluProfil(this.id)" class="poleVstup form-control" type="email" value="<?php echo $auth->getLoggedUserEmail() ?>">
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <label for="poleStareHeslo" class="col-lg-3 control-label">Súčasné heslo:</label>
                     <div class="col-lg-8">
-                        <input name="poleStareHeslo" id="poleStareHeslo" onchange="zmenaStylu(this.id)" class="poleVstup mb-3 form-control" type="password" value="">
+                        <input name="poleStareHeslo" id="poleStareHeslo" onchange="zmenaStyluProfil(this.id)" class="poleVstup mb-3 form-control" type="password" value="">
                     </div>
                 </div>
 
@@ -62,14 +62,14 @@
                         </svg>
                     </label>
                     <div class="col-lg-8">
-                        <input name="poleNoveHeslo" id="poleNoveHeslo" onchange="zmenaStylu(this.id)" onfocus="zobrazPole(this.id)" class="poleVstup mb-3 form-control" type="password" value="">
+                        <input name="poleNoveHeslo" id="poleNoveHeslo" onchange="zmenaStyluProfil(this.id)" onfocus="zobrazPole(this.id)" class="poleVstup mb-3 form-control" type="password" value="">
                     </div>
                 </div>
 
                 <div id="poleNoveHesloPotvrdenieKontajner" class="poleVstup skryte form-group">
                     <label for="poleNoveHesloPotvrdenie" class="col-lg-3 control-label">Potvrdenie nového hesla:</label>
                     <div class="col-lg-8">
-                        <input name="poleNoveHesloPotvrdenie" id="poleNoveHesloPotvrdenie" onchange="zmenaStylu(this.id)" class="mb-3 form-control" type="password" value="">
+                        <input name="poleNoveHesloPotvrdenie" id="poleNoveHesloPotvrdenie" onchange="zmenaStyluProfil(this.id)" class="mb-3 form-control" type="password" value="">
                     </div>
                 </div>
 

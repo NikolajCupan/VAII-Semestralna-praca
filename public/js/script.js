@@ -3,7 +3,8 @@ $(function ()
     $('[data-toggle="tooltip"]').tooltip()
 })
 
-function zmenaStylu(id)
+
+function zmenaStyluProfil(id)
 {
     let element = document.getElementById(id);
 
@@ -38,4 +39,12 @@ function obnovStranku()
             element.style.visibility = "hidden";
         }
     }
+}
+
+function zmenaStyluTabulka(id)
+{
+    let element = document.getElementById(id);
+    element.style.pointerEvents = "all";
+    element.style.color = "black";
+    element.disabled = false;
 }

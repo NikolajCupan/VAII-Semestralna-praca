@@ -97,10 +97,15 @@ html body {
 }
 
 .modifyUser {
-    color: #000000;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    color: #939393;
     text-decoration: none;
     margin: auto;
     width: 50%;
+    display: inline-block;
+    font-weight: bold;
 }
 
 .inline-block-child {
@@ -128,6 +133,11 @@ html body {
 
 .skryte {
     visibility: hidden;
+}
+
+body .center {
+    margin: auto;
+    width: 90%;
 }
 
 
