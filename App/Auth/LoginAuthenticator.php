@@ -6,7 +6,8 @@ use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\User;
 use App\App;
-use App\Helpers\RegisterErrorMessages;
+use App\Helpers\InputErrorMessages;
+use App\Helpers\InputChecking;
 
 class LoginAuthenticator extends DummyAuthenticator
 {
@@ -54,49 +55,11 @@ class LoginAuthenticator extends DummyAuthenticator
         return null;
     }
 
-    public function register($login, $email, $password, $passwordVerify) : RegisterErrorMessages
+    public function register($login, $email, $password, $passwordVerify) : InputErrorMessages
     {
         $allUsers = User::getAll();
 
-        foreach ($allUsers as $user)
-        {
-            if ($user->getUsername() == $login)
-            {
-                return RegisterErrorMessages::UsedName;
-            }
-
-            if ($user->getEmail() == $email)
-            {
-                return RegisterErrorMessages::UsedEmail;
-            }
-        }
-
-        if ($password != $passwordVerify)
-        {
-            return RegisterErrorMessages::DifferentPasswords;
-        }
-
-        if (!preg_match('~[0-9]+~', $password) || strlen($password) < 6)
-        {
-            return RegisterErrorMessages::SimplePassword;
-        }
-
-        if (strlen($login) > 30)
-        {
-            return RegisterErrorMessages::LongName;
-        }
-
-        if (strlen($email) > 75)
-        {
-            return RegisterErrorMessages::LongEmail;
-        }
-
-        if (strlen($password) > 50)
-        {
-            return RegisterErrorMessages::LongPassword;
-        }
-
-        return RegisterErrorMessages::Correct;
+        return InputChecking::skontrolujVstupy($allUsers, $login, $email, $password, $passwordVerify);
     }
 
     public function getAbbreviatedLoggedUserName() : mixed

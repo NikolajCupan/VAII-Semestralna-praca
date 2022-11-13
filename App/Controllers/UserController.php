@@ -4,7 +4,9 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Helpers\InputErrorMessages;
 use App\Models\User;
+use App\Helpers\InputChecking;
 
 /**
  * Class HomeController
@@ -48,7 +50,6 @@ class UserController extends AControllerBase
 
     public function editProfile() : Response
     {
-        $data = ['message' => 'Zmena udjaov bola uspesna!'];
         $formData = $this->app->getRequest()->getPost();
 
         if (!$this->app->getAuth()->isLogged() && !isset($formData['submit']))
@@ -68,14 +69,18 @@ class UserController extends AControllerBase
         $noveHeslo = $formData['poleNoveHeslo'];
         $noveHesloPotvrdenie = $formData['poleNoveHesloPotvrdenie'];
 
+
+        $user = User::getOne($id);
+        $realPassword = User::getOne($user->getId())->getPassword();
+
+        $allUsers = User::getAll('ID != ' . $id);
+
+        $data = [];
         if (empty($sucasneHeslo))
         {
             $data = ['message' => 'Nezadane heslo!'];
             return $this->html($data, 'profile');
         }
-
-        $user = User::getOne($id);
-        $realPassword = User::getOne($user->getId())->getPassword();
 
         if (!password_verify($sucasneHeslo, $realPassword))
         {
@@ -83,48 +88,40 @@ class UserController extends AControllerBase
             return $this->html($data, 'profile');
         }
 
-        // kontrola, ci sa meni heslo
+        $meniSaHeslo = false;
         if ($noveHeslo != "" || $noveHesloPotvrdenie != "")
         {
-            if ($noveHeslo != $noveHesloPotvrdenie)
-            {
-                $data = ['message' => 'Nove hesla sa nezhoduju!'];
-                return $this->html($data, 'profile');
-            }
-
-            $user->setPassword(password_hash($noveHeslo, PASSWORD_BCRYPT));
+            $meniSaHeslo = true;
+            $returnValue = InputChecking::skontrolujVstupy($allUsers, $noveMeno, $novyEmail, $noveHeslo, $noveHesloPotvrdenie);
         }
-
-
-        $allUsers = User::getAll();
-
-        // kontrola, ci meni meno
-        if ($noveMeno != $user->getUsername() || $novyEmail != $user->getEmail())
+        else
         {
-            foreach ($allUsers as $localUser)
-            {
-                if ($localUser->getId() == $id)
-                {
-                    continue;
-                }
-
-                if ($localUser->getUsername() == $noveMeno)
-                {
-                    $data = ['message' => 'Meno je uz pouzite!'];
-                    return $this->html($data, 'profile');
-                }
-                else if ($localUser->getEmail() == $novyEmail)
-                {
-                    $data = ['message' => 'Email je uz pouzity!'];
-                    return $this->html($data, 'profile');
-                }
-            }
+            $returnValue = InputChecking::skontrolujVstupy($allUsers, $noveMeno, $novyEmail, null, null);
         }
 
-        $user->setUsername($noveMeno);
-        $user->setEmail($novyEmail);
-        $user->save();
+        if ($returnValue == InputErrorMessages::Correct)
+        {
+            $user->setUsername($noveMeno);
+            $user->setEmail($novyEmail);
 
-        return $this->html($data, 'profile');
+            if ($meniSaHeslo)
+            {
+                $user->setPassword(password_hash($noveHeslo, PASSWORD_BCRYPT));
+            }
+
+            $user->save();
+            $_SESSION['user'] = $noveMeno;
+            return $this->redirect("?c=user&a=success");
+        }
+        else
+        {
+            $data = ['message' => $returnValue->value];
+            return $this->html($data, 'profile');
+        }
+    }
+
+    public function success() : Response
+    {
+        return $this->html();
     }
 }
