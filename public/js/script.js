@@ -13,11 +13,11 @@ function zmenaStylu(id)
 
 function zobrazPole(id)
 {
-    if (id == "poleNoveHeslo")
+    if (id === "poleNoveHeslo")
     {
         let viditelnost = window.getComputedStyle(document.querySelector('#poleNoveHesloPotvrdenieKontajner')).visibility;
 
-        if (viditelnost == "hidden")
+        if (viditelnost === "hidden")
         {
             $('#poleNoveHesloPotvrdenieKontajner').css('visibility', 'visible').hide().fadeIn();
         }
@@ -33,7 +33,7 @@ function obnovStranku()
         element.style.backgroundColor = "white";
         element.style.fontWeight = "normal";
 
-        if (element.id == 'poleNoveHesloPotvrdenieKontajner')
+        if (element.id === 'poleNoveHesloPotvrdenieKontajner')
         {
             element.style.visibility = "hidden";
         }

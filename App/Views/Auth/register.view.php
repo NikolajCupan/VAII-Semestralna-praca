@@ -5,7 +5,6 @@
 
 
 <link rel="stylesheet" type="text/css" href="../../../public/css/loginStyles.css">
-<link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css”/>
 
 <section class="vh-100">
     <div class="container h-100">
@@ -42,7 +41,7 @@
                                                 </div>
                                             </div>
 
-                                            <input value="<?php echo isset($_POST['login']) ? htmlspecialchars($_POST['login'], ENT_QUOTES) : ''; ?>" type="text" id="login" class="form-control" name="login" required/>
+                                            <input value="<?php echo isset($_POST['login']) ? htmlspecialchars($_POST['login'], ENT_QUOTES) : ''; ?>" type="text" id="login" class="form-control" name="login" required>
                                         </div>
                                     </div>
 
@@ -64,7 +63,7 @@
                                                 </div>
                                             </div>
 
-                                            <input value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : ''; ?>" type="email" id="email" class="form-control" name="email" required/>
+                                            <input value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : ''; ?>" type="email" id="email" class="form-control" name="email" required>
                                         </div>
                                     </div>
 

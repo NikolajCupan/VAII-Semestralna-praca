@@ -3,7 +3,6 @@ $layout = 'auth';
 /** @var Array $data */
 ?>
 
-<body>
 
 <link rel="stylesheet" type="text/css" href="../../../public/css/successfulRegisterStyles.css">
 <script src="../../../public/js/redirect.js"></script>
