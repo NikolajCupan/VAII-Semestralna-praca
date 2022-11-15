@@ -17,7 +17,7 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrácia</p>
 
-                                <form class="form-signup" method="post" action="?c=auth&a=register">
+                                <form name="registerFormular" onsubmit="skontrolujEmail()" class="form-signup" method="post" action="?c=auth&a=register">
 
                                     <div class="text-center text-danger mb-3">
                                         <p><?= @$data['message'] ?>&nbsp;</p>

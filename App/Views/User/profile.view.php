@@ -22,7 +22,7 @@
         <div class="col-md-9 personal-info">
             <h3>Osobné informácie</h3>
 
-            <form method="post" action="?c=user&a=editProfile" class="form-horizontal">
+            <form name="profilFormular" onsubmit="return skontrolujZadane()" method="post" action="?c=user&a=editProfile" class="form-horizontal">
                 <input type="hidden" name="id" value="<?php echo $auth->getLoggedUserId() ?>">
 
                 <div class="form-group">
