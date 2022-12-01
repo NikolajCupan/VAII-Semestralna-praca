@@ -5,6 +5,7 @@ use App\Models\User;
 /** @var User[] $data */
 ?>
 
+
 <table class="center table table-striped">
     <thead class="table-dark">
         <tr>
