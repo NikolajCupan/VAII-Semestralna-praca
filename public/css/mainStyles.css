@@ -146,7 +146,7 @@ body .center {
     object-fit: cover;
 }
 
-.row .card .clanokFooter {
+.row .card .clanokPrvyFooter, .row .card .clanokDruhyFooter {
     background-color: var(--farbaOddelovacov);
 }
 
@@ -158,6 +158,21 @@ body .center {
 .clanokDatum, .row .card .clanok:hover {
     color: #000000;
     font-weight: bold;
+}
+
+.row .card .clanokPrvyFooter .clanokLikes, .row .card .clanokPrvyFooter .clanokLiked,  .row .card .clanokPrvyFooter .clanokToBeLiked {
+    color: black;
+    margin-bottom: 0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.row .card .clanokPrvyFooter .clanokLiked, .row .card .clanokPrvyFooter .clanokToBeLiked:hover {
+    color: #000000;
+}
+
+.row .card .clanokPrvyFooter .clanokToBeLiked, .row .card .clanokPrvyFooter .clanokLiked:hover {
+    color: #ffffff;
 }
 
 

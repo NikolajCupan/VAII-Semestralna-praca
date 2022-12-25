@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Core\Model;
+use App\Models\Like;
 use App\Models\User;
 
 class Article extends Model
@@ -136,6 +137,40 @@ class Article extends Model
         else
         {
             return substr($text, 0, 300) . "...";
+        }
+    }
+
+    public function getLikesCount()
+    {
+        $likes = Like::getAll('article = ?', [$this->getID()]);
+
+        if (isset($likes))
+        {
+            return count($likes);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function hasLikeFromUser($userId) : bool
+    {
+        if (!isset($userId))
+        {
+            return false;
+        }
+
+        $like = Like::getAll('user = ? and article = ?', [$userId, $this->id]);
+
+
+        if (count($like) == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
