@@ -9,12 +9,12 @@ use App\Models\User;
 <table class="center table table-striped">
     <thead class="table-dark">
         <tr>
-            <th style="width: 6%" scope="col">ID</th>
-            <th style="width: 35%" scope="col">Meno</th>
-            <th style="width: 35%" scope="col">Email</th>
-            <th style="width: 10%" scope="col">Rola</th>
-            <th style="width: 7%" scope="col">Potvrdenie</th>
-            <th style="width: 7%" scope="col">Vymazat</th>
+            <th scope="col">ID</th>
+            <th scope="col">Meno</th>
+            <th class="d-none d-md-table-cell" scope="col">Email</th>
+            <th scope="col">Rola</th>
+            <th scope="col">Potvrdenie</th>
+            <th scope="col">Vymazat</th>
         </tr>
     </thead>
 
@@ -24,8 +24,11 @@ use App\Models\User;
 
         <tr>
             <th scope="row"><?php echo $user->getId() ?></th>
-            <td><?php echo $user->getUsername() ?></td>
-            <td><?php echo $user->getEmail() ?></td>
+
+            <td class="d-md-none"><?php echo $user->getAbbreviatedUserName() ?></td>
+            <td class="d-none d-md-table-cell"><?php echo $user->getUsername() ?></td>
+
+            <td class="d-none d-md-table-cell"><?php echo $user->getEmail() ?></td>
 
             <?php if ($user->getId() != $auth->getLoggedUserId()) { ?>
                 <form method="post" action="?c=admin&a=modify">
@@ -38,7 +41,7 @@ use App\Models\User;
                     <td>
                         <div class="inline-block-child">
                             <select onchange="zmenaStyluTabulka(<?php echo $user->getId() ?>)" class="form-select-sm form-select" name="rola" aria-label="select">
-                                <option selected disabled>Rola</option>
+                                <option selected disabled>Rola: <?php echo $user->getRole()?></option>
                                 <option value="u">u</option>
                                 <option value="a">a</option>
                             </select>

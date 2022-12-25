@@ -91,4 +91,18 @@ class User extends Model
     {
         $this->password = $password;
     }
+
+    public function getAbbreviatedUserName()
+    {
+        $name = $this->getUsername();
+
+        if (strlen($name) <= 5)
+        {
+            return $name;
+        }
+        else
+        {
+            return substr($name, 0, 5) . "...";
+        }
+    }
 }
