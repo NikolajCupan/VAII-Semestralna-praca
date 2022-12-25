@@ -51,85 +51,44 @@ function getArticle(Article $article)
 
 
 <div class="d-none d-lg-block">
-    <?php for ($i = 0; $i < $count; $i++) { ?>
-        <div class=" container">
-            <div class="row gx-3">
+    <div class="container">
+        <div class="row gx-3">
 
+            <?php for ($i = 0; $i < $count; $i++) { ?>
                 <div class="col-4">
-                    <?php
-                        $article = $data[$i];
-                        $i++;
-                        echo getArticle($article);
-                    ?>
+                    <?php $article = $data[$i]; ?>
+                    <?php echo getArticle($article); ?>
                 </div>
+            <?php } ?>
 
-                <div class="col-4">
-                    <?php
-                        if ($i < $count)
-                        {
-                        $article = $data[$i];
-                        echo getArticle($article);
-                        }
-
-                        $i++
-                    ?>
-                </div>
-
-                <div class="col-4">
-                    <?php
-                        if ($i < $count)
-                        {
-                            $article = $data[$i];
-                            echo getArticle($article);
-                        }
-                    ?>
-                </div>
-
-            </div>
         </div>
-    <?php } ?>
+    </div>
 </div>
 
 
 <div class="d-none d-md-block d-lg-none">
-    <?php for ($i = 0; $i < $count; $i++) { ?>
-        <div class=" container">
-            <div class="row gx-2">
+    <div class="container">
+        <div class="row gx-2">
 
+            <?php for ($i = 0; $i < $count; $i++) { ?>
                 <div class="col-6">
-                    <?php
-                    $article = $data[$i];
-                    $i++;
-                    echo getArticle($article);
-                    ?>
+                    <?php $article = $data[$i]; ?>
+                    <?php echo getArticle($article); ?>
                 </div>
+            <?php } ?>
 
-                <div class="col-6">
-                    <?php
-                    if ($i < $count)
-                    {
-                        $article = $data[$i];
-                        echo getArticle($article);
-                    }
-
-                    $i++
-                    ?>
-                </div>
-
-            </div>
         </div>
-    <?php } ?>
+    </div>
 </div>
 
 
 <div class="d-md-none">
-    <?php for ($i = 0; $i < $count; $i++) { ?>
-        <div class=" container">
-            <?php
-            $article = $data[$i];
-            $i++;
-            echo getArticle($article);
-            ?>
-        </div>
-    <?php } ?>
+    <div class="container">
+
+        <?php for ($i = 0; $i < $count; $i++) { ?>
+            <?php $article = $data[$i]; ?>
+            <?php echo getArticle($article); ?>
+        <?php } ?>
+
+    </div>
 </div>
