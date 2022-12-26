@@ -28,7 +28,7 @@ use App\Models\Article;
     <hr class="m-2">
 
 
-    <?php if ($data->getImage()) { ?>
+    <?php if ($data->getImage() && $data->imageExists()) { ?>
         <img src="<?php echo $data->getImage() ?>" class="clanokFotka img-responsive" alt="image">
         <hr>
     <?php } ?>
