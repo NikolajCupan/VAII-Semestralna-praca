@@ -147,7 +147,7 @@ body .center {
 }
 
 .row .card .clanokPrvyFooter, .row .card .clanokDruhyFooter {
-    background-color: var(--farbaOddelovacov);
+    background-color: #A6A6A6;
 }
 
 .row .card .clanok {
