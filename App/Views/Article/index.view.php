@@ -53,7 +53,7 @@ $count = count($data);
                         <div class="clanokDatum float-left"><?php echo $article->getDate() ?></div>
 
                         <div class="float-right">
-                            <a class="clanok nav-link" href="?c=home&a=about">Cely clanok</a>
+                            <a class="clanok nav-link" href="?c=article&a=specific&articleId=<?php echo $article->getId() ?>">Cely clanok</a>
                         </div>
                     </div>
                 </div>

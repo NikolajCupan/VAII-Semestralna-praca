@@ -175,6 +175,20 @@ body .center {
     color: #ffffff;
 }
 
+.zalomenieTextu {
+    word-break: break-all;
+}
+
+.clanokFotka {
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
 
 /* vyska clankov */
 @media only screen and (min-width: 1401px) {

@@ -43,7 +43,7 @@
                         <a class="nav-link" href="?c=home&a=about">O nás</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?c=articles">Články</a>
+                        <a class="nav-link" href="?c=article">Články</a>
                     </li>
 
                     <?php /** @var \App\Auth\LoginAuthenticator $auth */

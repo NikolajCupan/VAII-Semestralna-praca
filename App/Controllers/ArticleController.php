@@ -7,12 +7,25 @@ use App\Core\Responses\Response;
 use App\Models\Article;
 use App\Models\Like;
 
-class ArticlesController extends AControllerBase
+class ArticleController extends AControllerBase
 {
     public function index() : Response
     {
         $data = Article::getAll();
         return $this->html($data);
+    }
+
+    public function specific() : Response
+    {
+        $articleId = $this->request()->getValue('articleId');
+        $article = Article::getOne($articleId);
+
+        if (!isset($article))
+        {
+            return $this->redirect("?c=home");
+        }
+
+        return $this->html($article);
     }
 
     public function like()
