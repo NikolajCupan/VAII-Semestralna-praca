@@ -92,3 +92,8 @@ const validujEmail = (email) => {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 };
+
+$(document).on("click", ".deleteArticle", function () {
+    var articleId = "?c=article&a=delete&articleId=" + $(this).data('id');
+    $(".modal-footer #articleId").attr("href", articleId);
+});

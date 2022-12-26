@@ -33,10 +33,13 @@ class DummyAuthenticator implements IAuthenticator
      */
     function login($login, $password): bool
     {
-        if ($login == self::LOGIN && password_verify($password, self::PASSWORD_HASH)) {
+        if ($login == self::LOGIN && password_verify($password, self::PASSWORD_HASH))
+        {
             $_SESSION['user'] = self::USERNAME;
             return true;
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
@@ -46,7 +49,8 @@ class DummyAuthenticator implements IAuthenticator
      */
     function logout() : void
     {
-        if (isset($_SESSION["user"])) {
+        if (isset($_SESSION["user"]))
+        {
             unset($_SESSION["user"]);
             session_destroy();
         }

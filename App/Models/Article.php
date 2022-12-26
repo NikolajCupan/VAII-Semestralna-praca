@@ -122,7 +122,7 @@ class Article extends Model
         }
         else
         {
-            return "Unknown";
+            return "[unknown]";
         }
     }
 
@@ -172,5 +172,17 @@ class Article extends Model
         {
             return false;
         }
+    }
+
+    public function imageExists() : bool
+    {
+        $path = $this->image;
+
+        if (file_exists($path))
+        {
+            return true;
+        }
+
+        return false;
     }
 }

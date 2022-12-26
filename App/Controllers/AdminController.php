@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Models\Article;
+use App\Models\Like;
 use App\Models\User;
 
 class AdminController extends AControllerBase
@@ -41,6 +43,25 @@ class AdminController extends AControllerBase
 
         if ($userToDelete && ($id != $loggedUserId))
         {
+            // zmazem vsetky likes daneho pouzivatela
+            $likes = Like::getAll('user = ?', [$id]);
+
+            foreach ($likes as $like)
+            {
+                $like->delete();
+            }
+
+
+            // clanky pouzivatela nemazem, iba nastavim autora na null
+            $articles = Article::getAll('author = ?', [$id]);
+
+            foreach ($articles as $article)
+            {
+                $article->setAuthor(null);
+                $article->save();
+            }
+
+
             $userToDelete->delete();
         }
 

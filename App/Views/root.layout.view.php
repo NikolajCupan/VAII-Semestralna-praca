@@ -62,7 +62,7 @@
                     <ul class="nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pouzivatel</a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a></li>
                                 <li><a class="dropdown-item" href="?c=auth&a=register">Registrácia</a></li>
                                 <li><hr class="dropdown-divider"></li>
@@ -76,7 +76,7 @@
                     <ul class="nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Používateľ: <?= $auth->getLoggedUserName() ?></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="?c=user&a=profile">Profil</a></li>
                                 <li><a class="dropdown-item" href="?c=auth&a=logout">Odhlásenie</a></li>
                             </ul>
@@ -94,7 +94,7 @@
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
                         <?php } ?>
 
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="?c=home&a=contact">Kontakt</a></li>
                             <li><a class="dropdown-item" href="?c=home&a=about">O nás</a></li>
                             <li><a class="dropdown-item" href="?c=articles">Články</a></li>

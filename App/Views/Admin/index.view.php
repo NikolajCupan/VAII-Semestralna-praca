@@ -42,8 +42,9 @@ use App\Models\User;
                         <div class="inline-block-child">
                             <select onchange="zmenaStyluTabulka(<?php echo $user->getId() ?>)" class="form-select-sm form-select" name="rola" aria-label="select">
                                 <option selected disabled>Rola: <?php echo $user->getRole()?></option>
-                                <option value="u">u</option>
                                 <option value="a">a</option>
+                                <option value="b">b</option>
+                                <option value="u">u</option>
                             </select>
                         </div>
                     </td>
