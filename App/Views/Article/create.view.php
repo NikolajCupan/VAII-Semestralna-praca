@@ -46,23 +46,16 @@
     {
         var id = e.id;
         var val = e.value;
-        localStorage.setItem(id, val);
+        sessionStorage.setItem(id, val);
     }
 
     function getSavedValue (v)
     {
-        if (!localStorage.getItem(v))
+        if (!sessionStorage.getItem(v))
         {
             return "";
         }
-        return localStorage.getItem(v);
-    }
-
-    window.onpaint = vymazStorage();
-
-    function vymazStorage()
-    {
-        localStorage.clear();
+        return sessionStorage.getItem(v);
     }
 
 
