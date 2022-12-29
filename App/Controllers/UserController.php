@@ -51,8 +51,7 @@ class UserController extends AControllerBase
     public function editProfile() : Response
     {
         $formData = $this->app->getRequest()->getPost();
-
-        if (!$this->app->getAuth()->isLogged() && !isset($formData['submit']))
+        if (!$this->app->getAuth()->isLogged() || !isset($formData['submit']))
         {
             return $this->redirect("?c=home");
         }

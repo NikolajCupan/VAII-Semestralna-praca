@@ -151,17 +151,17 @@ return $content;
 </div>
 
 
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-
-
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Zmazanie clanku</h5>
             </div>
+
             <div class="modal-body">
                 Clanok po zmazani nie je mozne obnovit. Naozaj si prajete vykonat akciu?
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">Zrusit</button>
                 <a name="articleId" id="articleId" href="" type="button" class="btn btn-danger">Zmazat</a>

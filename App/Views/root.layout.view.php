@@ -97,7 +97,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="?c=home&a=contact">Kontakt</a></li>
                             <li><a class="dropdown-item" href="?c=home&a=about">O nás</a></li>
-                            <li><a class="dropdown-item" href="?c=articles">Články</a></li>
+                            <li><a class="dropdown-item" href="?c=article">Články</a></li>
                             <li><hr class="dropdown-divider"></li>
 
                             <?php

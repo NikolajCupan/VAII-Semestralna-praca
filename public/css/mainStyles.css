@@ -189,6 +189,11 @@ body .center {
     margin-bottom: 25px;
 }
 
+.clanokTextVstup {
+    max-height: 30em;
+    overflow-y: auto;
+}
+
 
 /* vyska clankov */
 @media only screen and (min-width: 1401px) {

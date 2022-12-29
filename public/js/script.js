@@ -55,7 +55,8 @@ function skontrolujZadane()
     let meno = document.forms["profilFormular"]["poleMeno"].value;
     let heslo = document.forms["profilFormular"]["poleStareHeslo"].value;
 
-    if (meno === "") {
+    if (meno === "")
+    {
         alert("Meno musi byt vyplnene!");
         return false;
     }
@@ -97,3 +98,22 @@ $(document).on("click", ".deleteArticle", function () {
     var articleId = "?c=article&a=delete&articleId=" + $(this).data('id');
     $(".modal-footer #articleId").attr("href", articleId);
 });
+
+function skontrolujZadaneClanok()
+{
+    let nadpis = document.forms["clanokFormular"]["clanokNadpis"].value;
+    let text = document.forms["clanokFormular"]["clanokText"].value;
+
+    if (nadpis === "")
+    {
+        alert("Nadpis musi byt zadany!");
+        return false;
+    }
+    else if (text === "")
+    {
+        alert("Text musi byt zadany!");
+        return false;
+    }
+
+    return true;
+}
