@@ -33,7 +33,15 @@
             <input type="file" class="form-control" id="clanokFotka" name="clanokFotka">
         </div>
 
-        <input type="submit" name="submit" class="btn btn-outline-dark col btn-lg btn-block" value="Potvrdiť">
+        <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+                <input type="submit" name="submit" class="btn btn-outline-dark col btn-lg btn-block" value="Potvrdiť">
+                <span></span>
+                <a type="button" onclick="obnov()" class="btn btn-default">Reset</a>
+            </div>
+        </div>
+
     </form>
 </div>
 
@@ -70,4 +78,11 @@
             alert("Maximalna velkost fotky je 2MB!");
         }
     });
+
+
+    function obnov()
+    {
+        sessionStorage.clear();
+        location.reload();
+    }
 </script>

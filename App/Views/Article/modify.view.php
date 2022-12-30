@@ -43,6 +43,14 @@
             </div>
         <?php } ?>
 
-        <input type="submit" name="submit" class="btn btn-outline-dark col btn-lg btn-block" value="Potvrdiť">
+        <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+                <input type="submit" name="submit" class="btn btn-outline-dark col btn-lg btn-block" value="Potvrdiť">
+                <span></span>
+                <a type="button" href="?c=article&a=modify&articleId=<?php echo $data['article']->getId() ?>" class="btn btn-default">Obnovit</a>
+            </div>
+        </div>
+
     </form>
 </div>
