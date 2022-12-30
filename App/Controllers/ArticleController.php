@@ -301,9 +301,12 @@ class ArticleController extends AControllerBase
         $suborTyp = $subor['type'];
         $suborVelkost = $subor['size'];
 
-        if ($suborTyp != 'image/jpeg' && $suborVelkost != 0)
+        if ($suborMeno != "" || $suborVelkost != 0)
         {
-            return ['message' => 'Nespravny format fotky!'];
+            if ($suborTyp != 'image/jpeg')
+            {
+                return ['message' => 'Nespravny format fotky!'];
+            }
         }
 
         if ($suborVelkost > 2097152)
