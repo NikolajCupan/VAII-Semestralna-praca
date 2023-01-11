@@ -130,7 +130,7 @@
         <div class="prechodDo"></div>
 
 <!--    zobrazuje obsah stranky-->
-        <div class="container-fluid mt-3">
+        <div class="container-fluid mt-3 mb-4">
             <div class="web-content">
                 <?= $contentHTML ?>
             </div>

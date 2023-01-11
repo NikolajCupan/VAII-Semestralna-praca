@@ -27,13 +27,13 @@ class ArticleController extends AControllerBase
         return true;
     }
 
-    public function index() : Response
+    public function index(): Response
     {
         $data = Article::getAll();
         return $this->html($data);
     }
 
-    public function create() : Response
+    public function create(): Response
     {
         return $this->html();
     }
@@ -45,6 +45,11 @@ class ArticleController extends AControllerBase
         $articleId = $this->request()->getValue('articleId');
         $article = Article::getOne($articleId);
 
+        if (!isset($article))
+        {
+            return $this->redirect('?c=article');
+        }
+
         $this->hasRightToModify($article);
         $data['article'] = $article;
 
@@ -55,6 +60,11 @@ class ArticleController extends AControllerBase
     {
         $articleId = $this->request()->getValue('articleId');
         $article = Article::getOne($articleId);
+
+        if (!isset($article))
+        {
+            return $this->redirect('?c=article');
+        }
 
         $this->hasRightToModify($article);
 
@@ -98,7 +108,7 @@ class ArticleController extends AControllerBase
 
         if (!isset($article))
         {
-            return $this->redirect("?c=home");
+            return $this->redirect("?c=article");
         }
 
         return $this->html($article);
@@ -107,15 +117,9 @@ class ArticleController extends AControllerBase
     public function like()
     {
         $articleId = $this->request()->getValue('articleId');
+        $like = $this->getUserLikes($articleId);
 
-        if (!$this->app->getAuth()->isLogged() || !isset($articleId))
-        {
-            return $this->redirect("?c=article");
-        }
-
-        $like = Like::getAll('user = ? and article = ?', [$this->app->getAuth()->getLoggedUserId(), $articleId]);
-
-        if (count($like) != 0)
+        if (is_null($like) || count($like) != 0)
         {
             return $this->redirect("?c=article");
         }
@@ -131,15 +135,9 @@ class ArticleController extends AControllerBase
     public function cancelLike()
     {
         $articleId = $this->request()->getValue('articleId');
+        $like = $this->getUserLikes($articleId);
 
-        if (!$this->app->getAuth()->isLogged() || !isset($articleId))
-        {
-            return $this->redirect("?c=article");
-        }
-
-        $like = Like::getAll('user = ? and article = ?', [$this->app->getAuth()->getLoggedUserId(), $articleId]);
-
-        if (count($like) == 0)
+        if (is_null($like) || count($like) == 0)
         {
             return $this->redirect("?c=article");
         }
@@ -147,6 +145,23 @@ class ArticleController extends AControllerBase
         $like[0]->delete();
 
         return $this->redirect("?c=article");
+    }
+
+    public function getUserLikes($articleId)
+    {
+        $article = Article::getOne($articleId);
+
+        if (!isset($article))
+        {
+            return null;
+        }
+
+        if (!$this->app->getAuth()->isLogged() || !isset($articleId))
+        {
+            return null;
+        }
+
+        return Like::getAll('user = ? and article = ?', [$this->app->getAuth()->getLoggedUserId(), $articleId]);
     }
 
     public function delete()

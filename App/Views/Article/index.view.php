@@ -11,9 +11,6 @@ $count = count($data);
 ?>
 
 
-<a href="?c=article&a=create">Novy</a>
-
-
 <?php
 
     function getHasPermissionToManage(Article $article, \App\Core\IAuthenticator $auth) : bool
@@ -45,6 +42,10 @@ $count = count($data);
 
     ?>
 
+
+    <?php if ($auth->getLoggedUserRole() == "a" || $auth->getLoggedUserRole() == "b") { ?>
+        <a style="margin-left: 12px" class="mb-4 btn btn-outline-dark col btn-lg btn-block" href="?c=article&a=create">Novy</a>
+    <?php } ?>
 
     <div class="mb-4 container">
         <div class="row">
