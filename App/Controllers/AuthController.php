@@ -42,10 +42,12 @@ class AuthController extends AControllerBase
 
         $formData = $this->app->getRequest()->getPost();
         $logged = null;
-        if (isset($formData['submit'])) {
+        if (isset($formData['submit']))
+        {
             $logged = $this->app->getAuth()->login($formData['login'], $formData['password']);
-            if ($logged) {
-                return $this->redirect('?c=user');
+            if ($logged)
+            {
+                return $this->redirect('?c=home');
             }
         }
 

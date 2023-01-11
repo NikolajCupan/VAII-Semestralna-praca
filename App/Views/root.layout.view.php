@@ -40,9 +40,6 @@
                         <a class="nav-link" href="?c=home&a=contact">Kontakt</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?c=home&a=about">O nás</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="?c=article">Články</a>
                     </li>
 
@@ -65,8 +62,6 @@
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a></li>
                                 <li><a class="dropdown-item" href="?c=auth&a=register">Registrácia</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="?c=home&a=help">Help</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -96,7 +91,6 @@
 
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="?c=home&a=contact">Kontakt</a></li>
-                            <li><a class="dropdown-item" href="?c=home&a=about">O nás</a></li>
                             <li><a class="dropdown-item" href="?c=article">Články</a></li>
                             <li><hr class="dropdown-divider"></li>
 
@@ -105,8 +99,6 @@
                             if (!$auth->isLogged()) { ?>
                                 <li><a class="dropdown-item" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a></li>
                                 <li><a class="dropdown-item" href="?c=auth&a=register">Registrácia</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="?c=home&a=help">Help</a></li>
                             <?php } else { ?>
                                 <li><a class="dropdown-item" href="?c=user&a=profile">Profil</a></li>
                                 <li><a class="nav-link" href="?c=auth&a=logout">Odhlásenie</a></li>
@@ -129,6 +121,7 @@
 
         <div class="prechodDo"></div>
 
+
 <!--    zobrazuje obsah stranky-->
         <div class="container-fluid mt-3 mb-4">
             <div class="web-content">
@@ -136,10 +129,6 @@
             </div>
         </div>
 
-        <!--
-        <div class="medzeraMala"></div>
-        <div class="prechodZ"></div>
-        <div class="pasik"></div>
-        -->
+
     </body>
 </html>
