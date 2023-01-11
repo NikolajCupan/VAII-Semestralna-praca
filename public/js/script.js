@@ -106,12 +106,30 @@ function skontrolujZadaneClanok()
 
     if (nadpis === "")
     {
-        alert("Nadpis musi byt zadany!");
+        alert("Nadpis musí byť zadaný!");
         return false;
     }
     else if (text === "")
     {
-        alert("Text musi byt zadany!");
+        alert("Text musí byť zadaný!");
+        return false;
+    }
+
+    return true;
+}
+
+function skontrolujZadaneKomentar()
+{
+    let text = document.forms["komentarFormular"]["komentarText"].value;
+
+    if (text.length < 5)
+    {
+        alert("Komentár musí obshovať aspoň 5 znakov!");
+        return false;
+    }
+    else if (text.length > 500)
+    {
+        alert("Komentár nemôže obsahovať viac ako 500 znakov!");
         return false;
     }
 

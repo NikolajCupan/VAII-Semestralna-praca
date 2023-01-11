@@ -198,6 +198,17 @@ body .center {
     color: red;
 }
 
+.card .komentarHlavicka {
+    background-color: #A6A6A6;
+    font-weight: bold;
+}
+
+.komentarZiadne {
+    font-weight: bold;
+    text-align: left;
+    font-size: 20px;
+}
+
 
 /* vyska clankov */
 @media only screen and (min-width: 1401px) {

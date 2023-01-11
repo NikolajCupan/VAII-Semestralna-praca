@@ -91,4 +91,32 @@ class Comment extends Model
     {
         $this->date = $date;
     }
+
+    public function getAuthorName()
+    {
+        $user = User::getOne($this->getUser());
+
+        if (isset($user))
+        {
+            return $user->getUsername();
+        }
+        else
+        {
+            return "[unknown]";
+        }
+    }
+
+    public function getAbbreviatedAuthorName()
+    {
+        $name = $this->getAuthorName();
+
+        if (strlen($name) <= 15)
+        {
+            return $name;
+        }
+        else
+        {
+            return substr($name, 0, 15) . "...";
+        }
+    }
 }

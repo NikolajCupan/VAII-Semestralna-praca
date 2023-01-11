@@ -5,8 +5,10 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Like;
 use App\Models\User;
+use App\Controllers\CommentController;
 
 class ArticleController extends AControllerBase
 {
@@ -111,7 +113,11 @@ class ArticleController extends AControllerBase
             return $this->redirect("?c=article");
         }
 
-        return $this->html($article);
+        $comments = CommentController::getArticleComments($articleId);
+        $data['article'] = $article;
+        $data['comments'] = $comments;
+        
+        return $this->html($data);
     }
 
     public function like()
@@ -183,10 +189,16 @@ class ArticleController extends AControllerBase
         if (isset($articleToDelete))
         {
             $likes = Like::getAll('article = ?', [$articleId]);
+            $comments = Comment::getAll('article = ?', [$articleId]);
 
             foreach ($likes as $like)
             {
                 $like->delete();
+            }
+
+            foreach ($comments as $comment)
+            {
+                $comment->delete();
             }
 
             $fotka = $articleToDelete->getImage();
