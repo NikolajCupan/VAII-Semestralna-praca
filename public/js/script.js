@@ -117,21 +117,3 @@ function skontrolujZadaneClanok()
 
     return true;
 }
-
-function skontrolujZadaneKomentar()
-{
-    let text = document.forms["komentarFormular"]["komentarText"].value;
-
-    if (text.length < 5)
-    {
-        alert("Komentár musí obshovať aspoň 5 znakov!");
-        return false;
-    }
-    else if (text.length > 500)
-    {
-        alert("Komentár nemôže obsahovať viac ako 500 znakov!");
-        return false;
-    }
-
-    return true;
-}

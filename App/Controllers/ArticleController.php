@@ -113,11 +113,7 @@ class ArticleController extends AControllerBase
             return $this->redirect("?c=article");
         }
 
-        $comments = CommentController::getArticleComments($articleId);
-        $data['article'] = $article;
-        $data['comments'] = $comments;
-        
-        return $this->html($data);
+        return $this->html($article);
     }
 
     public function like()
