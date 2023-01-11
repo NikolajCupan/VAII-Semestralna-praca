@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <h2 class="text-left mb-0">Formular na modifikovanie existujuceho clanku</h2>
+    <h2 class="text-left mb-0">Formulár na modifikovanie existujúceho článku</h2>
     <hr>
 
 
@@ -32,7 +32,7 @@
         <?php if ($data['article']->getImage() && $data['article']->imageExists()) { ?>
             <div class="form-group mt-4 mb-4">
                 <a type="button" href="?c=article&a=deletePhoto&articleId=<?php echo $data['article']->getId() ?>">
-                    <label class="hrubyText clanokZmazanieFotky form-label mb-2" for="clanokFotka">Zmazat aktualnu fotku</label>
+                    <label class="hrubyText clanokZmazanieFotky form-label mb-2" for="clanokFotka">Zmazať aktuálnu fotku</label>
                 </a>
                 <img src="<?php echo $data['article']->getImage() ?>" class="mx-0 mt-0 float-left clanokFotka img-responsive" alt="image">
             </div>
@@ -48,7 +48,7 @@
             <div class="col-md-8">
                 <input type="submit" name="submit" class="btn btn-outline-dark col btn-lg btn-block" value="Potvrdiť">
                 <span></span>
-                <a type="button" href="?c=article&a=modify&articleId=<?php echo $data['article']->getId() ?>" class="btn btn-default">Obnovit</a>
+                <a type="button" href="?c=article&a=modify&articleId=<?php echo $data['article']->getId() ?>" class="btn btn-default">Obnoviť</a>
             </div>
         </div>
 

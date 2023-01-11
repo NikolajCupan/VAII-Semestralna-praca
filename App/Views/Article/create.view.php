@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <h2 class="text-left mb-0">Formular na vytvorenie noveho clanku</h2>
+    <h2 class="text-left mb-0">Formulár na vytvorenie nového článku</h2>
     <hr>
 
 
@@ -20,12 +20,12 @@
 
         <div class="form-group mb-4">
             <label for="clanokNadpis" class="hrubyText mb-2">Nadpis</label>
-            <input onkeyup='saveValue(this);' type="text" class="form-control" id="clanokNadpis" name="clanokNadpis" placeholder="Vas nadpis">
+            <input onkeyup='saveValue(this);' type="text" class="form-control" id="clanokNadpis" name="clanokNadpis" placeholder="Váš nadpis">
         </div>
 
         <div class="form-group mb-2">
             <label for="clanokText" class="hrubyText mb-2">Text</label>
-            <textarea onkeyup='saveValue(this);' class="form-control clanokTextVstup" id="clanokText" name="clanokText" rows="15" placeholder="Vas text"></textarea>
+            <textarea onkeyup='saveValue(this);' class="form-control clanokTextVstup" id="clanokText" name="clanokText" rows="15" placeholder="Váš text"></textarea>
         </div>
 
         <div class="form-group mb-4">

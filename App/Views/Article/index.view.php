@@ -43,10 +43,6 @@ $count = count($data);
     ?>
 
 
-    <?php if ($auth->getLoggedUserRole() == "a" || $auth->getLoggedUserRole() == "b") { ?>
-        <a style="margin-left: 12px" class="mb-4 btn btn-outline-dark col btn-lg btn-block" href="?c=article&a=create">Novy</a>
-    <?php } ?>
-
     <div class="mb-4 container">
         <div class="row">
             <div class="col-sm-12">
@@ -100,7 +96,7 @@ $count = count($data);
                         <div class="clanokDatum float-left"><?php echo $article->getDate() ?></div>
 
                         <div class="float-right">
-                            <a class="clanok nav-link" href="?c=article&a=specific&articleId=<?php echo $article->getId() ?>">Cely clanok</a>
+                            <a class="clanok nav-link" href="?c=article&a=specific&articleId=<?php echo $article->getId() ?>">Celý článok</a>
                         </div>
                     </div>
                 </div>
@@ -119,6 +115,9 @@ return $content;
 
 <div class="d-none d-lg-block">
     <div class="container">
+        <?php if ($auth->getLoggedUserRole() == "a" || $auth->getLoggedUserRole() == "b") { ?>
+            <a style="margin-left: 12px" class="align-middle mb-4 btn btn-outline-dark col btn-lg btn-block" href="?c=article&a=create">Nový</a>
+        <?php } ?>
         <div class="row gx-3">
 
             <?php
@@ -166,16 +165,16 @@ return $content;
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Zmazanie clanku</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Zmazanie článku</h5>
             </div>
 
             <div class="modal-body">
-                Clanok po zmazani nie je mozne obnovit. Naozaj si prajete vykonat akciu?
+                Článok po zmazaní nie je možné obnoviť. Naozaj si prajete vykonať akciu?
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Zrusit</button>
-                <a name="articleId" id="articleId" href="" type="button" class="btn btn-danger">Zmazat</a>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Zrušiť</button>
+                <a name="articleId" id="articleId" href="" type="button" class="btn btn-danger">Zmazať</a>
             </div>
         </div>
     </div>
