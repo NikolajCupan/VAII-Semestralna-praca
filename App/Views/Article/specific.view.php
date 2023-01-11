@@ -89,8 +89,8 @@ $comments = $data['comments'];
                 </div>
             </div>
         <?php } ?>
-    <?php } else { ?>
-        <!--<p class="komentarZiadne">Článok zatiaľ nemá žiadne komentáre, buďte prvý a pridajte komentár!</p>-->
+    <?php } else if (!$auth->isLogged()) { ?>
+        <p class="komentarZiadne">Článok zatiaľ nemá žiadne komentáre!</p>
     <?php } ?>
 
 </div>
