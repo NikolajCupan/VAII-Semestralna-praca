@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Article;
+use App\Models\Type;
 use App\Models\Like;
 use App\Models\User;
 
@@ -17,8 +18,7 @@ class AdminController extends AControllerBase
             return false;
         }
 
-        $id = $this->app->getAuth()->getLoggedUserId();
-        $userRole = User::getOne($id)->getRole();
+        $userRole  = $this->app->getAuth()->getLoggedUserRole();
 
         if ($userRole == "a")
         {
@@ -30,7 +30,9 @@ class AdminController extends AControllerBase
 
     public function index() : Response
     {
-        $data = User::getAll();
+        $data = [];
+        $data['users'] = User::getAll();
+        $data['types'] = Type::getAll();
         return $this->html($data);
     }
 
@@ -83,6 +85,55 @@ class AdminController extends AControllerBase
                 $user->setRole($rola);
                 $user->save();
             }
+        }
+
+        return $this->redirect("?c=admin");
+    }
+
+    public function addType()
+    {
+        $nazovTyp = $this->request()->getValue('typNazov');
+
+        if (strlen($nazovTyp) < 3 || strlen($nazovTyp) > 30)
+        {
+            return $this->redirect("?c=admin");
+        }
+
+        $typy = Type::getAll();
+
+        if (in_array($nazovTyp, $typy))
+        {
+            return $this->redirect("?c=admin");
+        }
+
+        $newTyp = new Type();
+        $newTyp->setName($nazovTyp);
+        $newTyp->save();
+
+        return $this->redirect("?c=admin");
+    }
+
+    public function deleteTyp()
+    {
+        $id = $this->request()->getValue('id');
+        $typToDelete = Type::getOne($id);
+
+        if (isset($typToDelete))
+        {
+            if ($typToDelete->getName() == "Nezaradené")
+            {
+                return $this->redirect("?c=admin");
+            }
+
+            $articles = Article::getAll('type = ?', [$id]);
+            $nezaradene = Type::getAll('name = ?', ['Nezaradené']);
+            foreach ($articles as $article)
+            {
+                $article->setType($nezaradene[0]->getId());
+                $article->save();
+            }
+
+            $typToDelete->delete();
         }
 
         return $this->redirect("?c=admin");

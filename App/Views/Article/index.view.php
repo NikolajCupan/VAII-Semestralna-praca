@@ -60,6 +60,11 @@ $count = count($data);
                     </div>
 
 
+                    <div class="clanokNultyFooter card-footer text-muted">
+                        <?php echo $article->getTypeName() ?>
+                    </div>
+
+
                     <div class="clanokPrvyFooter card-footer text-muted d-flex justify-content-between">
                         <div class="float-left">
                             <?php if ($auth->isLogged()) { ?>

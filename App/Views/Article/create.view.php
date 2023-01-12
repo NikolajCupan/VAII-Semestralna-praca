@@ -1,6 +1,10 @@
 <?php
-    /** @var \App\Core\IAuthenticator $auth */
-    /** @var Array $data */
+
+use App\Models\Type;
+
+/** @var \App\Core\IAuthenticator $auth */
+/** @var Type[] $data */
+
 ?>
 
 
@@ -8,11 +12,6 @@
 
     <h2 class="text-left mb-0">Formulár na vytvorenie nového článku</h2>
     <hr>
-
-
-    <div class="text-center text-danger mb-3">
-        <p><?= @$data['message'] ?>&nbsp;</p>
-    </div>
 
 
     <form enctype="multipart/form-data" name="clanokFormular" onsubmit="return skontrolujZadaneClanok()" method="post" action="?c=article&a=postArticle" class="form-horizontal">
@@ -31,6 +30,15 @@
         <div class="form-group mb-4">
             <label class="form-label" for="clanokFotka"></label>
             <input type="file" class="form-control" id="clanokFotka" name="clanokFotka">
+        </div>
+
+        <div>
+            <select class="form-select-md form-select" id="kategoria" name="kategoria" aria-label="select">
+                <option selected disabled>Kategória: Nezaradené</option>
+                <?php foreach ($data as $type) { ?>
+                    <option value="<?php echo $type->getId() ?>"><?php echo $type->getName() ?></option>
+                <?php } ?>
+            </select>
         </div>
 
         <div class="form-group">

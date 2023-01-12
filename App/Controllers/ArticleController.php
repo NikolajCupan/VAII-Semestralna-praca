@@ -7,6 +7,7 @@ use App\Core\Responses\Response;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Like;
+use App\Models\Type;
 use App\Models\User;
 use App\Controllers\CommentController;
 
@@ -37,12 +38,13 @@ class ArticleController extends AControllerBase
 
     public function create(): Response
     {
-        return $this->html();
+        $data = Type::getAll('name != ?', ['Nezaradené']);
+        return $this->html($data);
     }
 
     public function modify() : Response
     {
-        $data = ['message' => ''];
+        $data = [];
 
         $articleId = $this->request()->getValue('articleId');
         $article = Article::getOne($articleId);
@@ -54,6 +56,7 @@ class ArticleController extends AControllerBase
 
         $this->hasRightToModify($article);
         $data['article'] = $article;
+        $data['types'] = Type::getAll();
 
         return $this->html($data);
     }
@@ -258,6 +261,17 @@ class ArticleController extends AControllerBase
         $datum = date("Y-m-d");
         $newArticle->setDate($datum);
 
+        $kategoria = $this->request()->getValue('kategoria');
+        if (isset($kategoria))
+        {
+            $newArticle->setType($kategoria);
+        }
+        else
+        {
+            $idNezaradene = Type::getAll('name = ?', ['Nezaradené']);
+            $newArticle->setType($idNezaradene[0]->getId());
+        }
+
         $newArticle->save();
 
         return $this->redirect("?c=article");
@@ -296,6 +310,12 @@ class ArticleController extends AControllerBase
 
         $datum = date("Y-m-d");
         $article->setDate($datum);
+
+        $kategoria = $this->request()->getValue('kategoria');
+        if (isset($kategoria))
+        {
+            $article->setType($kategoria);
+        }
 
         $article->save();
 

@@ -117,3 +117,21 @@ function skontrolujZadaneClanok()
 
     return true;
 }
+
+function skontrolujZadaneTyp()
+{
+    let typ = document.forms["typFormular"]["typNazov"].value;
+
+    if (typ.length < 3)
+    {
+        alert("Kategória musí obshovať aspoň 3 znaky!");
+        return false;
+    }
+    else if (typ.length > 30)
+    {
+        alert("Kategória nemôže obsahovať viac ako 30 znakov!");
+        return false;
+    }
+
+    return true;
+}

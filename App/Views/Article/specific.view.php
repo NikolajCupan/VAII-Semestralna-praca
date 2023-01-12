@@ -21,14 +21,20 @@ use App\Models\Comment;
             <div class="hrubyText left"><?php echo $data->getAuthorName() ?></div>
             <div class="hrubyText right"><?php echo $data->getDate() ?></div>
         </div>
+
+        <hr class="m-2">
+
+        <div class="hrubyText right"><?php echo $data->getTypeName() ?></div>
     </div>
 
     <div class="d-sm-none">
         <div class="zalomenieTextu hrubyText left"><?php echo $data->getAuthorName() ?></div>
         <div class="hrubyText right"><?php echo $data->getDate() ?></div>
-    </div>
 
-    <hr class="m-2">
+        <hr class="m-2">
+
+        <div class="hrubyText right"><?php echo $data->getTypeName() ?></div>
+    </div>
 
 
     <?php if ($data->getImage() && $data->imageExists()) { ?>
@@ -37,7 +43,7 @@ use App\Models\Comment;
     <?php } ?>
 
 
-    <p style="white-space: pre-line" class="zalomenieTextu"><?php echo $data->getText() ?></p>
+    <p style="white-space: pre-line" class="mt-2 zalomenieTextu"><?php echo $data->getText() ?></p>
 
 
     <h4 class="mt-5 zalomenieTextu">Komentáre</h4>

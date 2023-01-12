@@ -14,6 +14,7 @@ class Article extends Model
     protected $text;
     protected $image;
     protected $date;
+    protected $type;
 
     /**
      * @return mixed
@@ -111,6 +112,22 @@ class Article extends Model
         $this->date = $date;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type): void
+    {
+        $this->type = $type;
+    }
+
 
     public function getAuthorName()
     {
@@ -184,5 +201,18 @@ class Article extends Model
         }
 
         return false;
+    }
+
+    public function getTypeName()
+    {
+        $typ = $this->getType();
+
+        if (!isset($typ))
+        {
+            return '[unknown]';
+        }
+
+        $nazovTyp = Type::getOne($typ)->getName();
+        return $nazovTyp;
     }
 }

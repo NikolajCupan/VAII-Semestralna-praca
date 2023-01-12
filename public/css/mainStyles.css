@@ -146,6 +146,10 @@ body .center {
     object-fit: cover;
 }
 
+.row .card .clanokNultyFooter {
+    background-color: transparent;
+}
+
 .row .card .clanokPrvyFooter, .row .card .clanokDruhyFooter {
     background-color: #A6A6A6;
 }
@@ -208,6 +212,37 @@ body .center {
     text-align: left;
     font-size: 20px;
 }
+
+.typConfirm {
+    color: #000000 !important;
+}
+
+
+/* input field pre novy typ */
+@media only screen and (min-width: 1401px) {
+    .inline-block-child .novyTyp {
+        width: 550%;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1400px) {
+    .inline-block-child .novyTyp {
+        width: 400%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .inline-block-child .novyTyp {
+        width: 280%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .inline-block-child .novyTyp {
+        width: 100%;
+    }
+}
+/* koniec input field pre novy typ */
 
 
 /* vyska clankov */
