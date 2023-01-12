@@ -101,9 +101,12 @@ class AdminController extends AControllerBase
 
         $typy = Type::getAll();
 
-        if (in_array($nazovTyp, $typy))
+        foreach ($typy as $typ)
         {
-            return $this->redirect("?c=admin");
+            if ($typ->getName() == $nazovTyp)
+            {
+                return $this->redirect("?c=admin");
+            }
         }
 
         $newTyp = new Type();
