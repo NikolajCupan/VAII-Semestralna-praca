@@ -4,6 +4,8 @@
 ?>
 
 
+<script src="../../../public/js/login.js"></script>
+
 <div class="vh-100">
     <div class="container py-5 h-100">
         <div class="row d-flex align-items-center justify-content-center h-100">
@@ -15,24 +17,24 @@
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                 <form class="form-signin" method="post" action="<?= \App\Config\Configuration::LOGIN_URL ?>">
 
-                    <div class="text-center text-danger mb-3">
-                        <p><?= @$data['message'] ?>&nbsp;</p>
+                    <div id="chybaPrihlasenie" class="text-center text-danger mb-3">
+
                     </div>
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="login">Zadajte meno</label>
-                        <input value="<?php echo isset($_POST['login']) ? htmlspecialchars($_POST['login'], ENT_QUOTES) : ''; ?>" type="text" id="login" class="form-control form-control-lg" name="login" required autofocus>
+                        <input type="text" id="login" class="form-control form-control-lg" name="login" placeholder="Meno" required autofocus>
                     </div>
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="password">Zadajte heslo</label>
-                        <input type="password" id="password" class="form-control form-control-lg" name="password" required>
+                        <input type="password" id="password" class="form-control form-control-lg" name="password" placeholder="******" required>
                     </div>
 
                     <div class="container text-center">
                         <div class="row">
                             <div class="col">
-                                <button class="loginTlacidlo btn btn-outline-dark col btn-lg btn-block" type="submit" name="submit">Prihlásiť</button>
+                                <button id="loginTlacidlo" class="btn btn-outline-dark col btn-lg btn-block" type="submit" name="submit">Prihlásiť</button>
                             </div>
                             <div class="col">
                                 <a href="?c=home" class="loginTlacidlo btn btn-outline-dark col btn-lg btn-block" role="button">Domov</a>

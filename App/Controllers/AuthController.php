@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Config\Configuration;
 use App\Core\AControllerBase;
 use App\Auth\LoginAuthenticator;
+use App\Core\Responses\JsonResponse;
 use App\Core\Responses\Response;
 use App\Helpers\InputErrorMessages;
 use App\Models\User;
@@ -40,19 +41,27 @@ class AuthController extends AControllerBase
             return $this->redirect("?c=home");
         }
 
-        $formData = $this->app->getRequest()->getPost();
-        $logged = null;
-        if (isset($formData['submit']))
+        return $this->html();
+    }
+
+    public function tryToLogin()
+    {
+        if ($this->app->getAuth()->isLogged())
         {
-            $logged = $this->app->getAuth()->login($formData['login'], $formData['password']);
-            if ($logged)
-            {
-                return $this->redirect('?c=home');
-            }
+            return $this->redirect("?c=home");
         }
 
-        $data = ($logged === false ? ['message' => 'Zlé prihlasovanie údaje!'] : []);
-        return $this->html($data, 'login');
+        $meno = $this->request()->getValue('meno');
+        $heslo = $this->request()->getValue('heslo');
+
+        $logged = $this->app->getAuth()->login($meno, $heslo);
+        $data = ['message' => '&nbsp'];
+        if (!$logged)
+        {
+            $data = ['message' => 'Zlé prihlasovanie údaje!'];
+        }
+
+        return new JsonResponse($data);
     }
 
     /**
