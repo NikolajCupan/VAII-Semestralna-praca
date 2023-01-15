@@ -370,7 +370,7 @@ class ArticleController extends AControllerBase
 
         $cas = time();
         $nahodnyString = substr(str_shuffle(MD5(microtime())), 0, 5);
-        $unikatneMeno = "public" . DIRECTORY_SEPARATOR . "articles" . DIRECTORY_SEPARATOR . "{$cas}-{$nahodnyString}-{$suborMeno}";
+        $unikatneMeno = "public/articles/" . "{$cas}-{$nahodnyString}-{$suborMeno}";
 
         move_uploaded_file($subor['tmp_name'], $unikatneMeno);
 

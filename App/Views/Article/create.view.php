@@ -46,7 +46,7 @@ use App\Models\Type;
             <div class="col-md-8">
                 <input type="submit" name="submit" class="btn btn-outline-dark col btn-lg btn-block" value="Potvrdiť">
                 <span></span>
-                <a type="button" onclick="obnov()" class="btn btn-default">Reset</a>
+                <a onclick="obnov()" class="btn btn-default">Reset</a>
             </div>
         </div>
 

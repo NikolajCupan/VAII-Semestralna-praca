@@ -40,12 +40,12 @@ $types = $data['types'];
             <?php if ($user->getId() != $auth->getLoggedUserId()) { ?>
                 <form method="post" action="?c=admin&a=modify">
 
-                    <?php /** @var \App\Models\User $data */
-                    if ($user->getId()) { ?>
-                        <input type="hidden" name="id" value="<?php echo $user->getId() ?>">
-                    <?php } ?>
-
                     <td>
+                        <?php /** @var \App\Models\User $data */
+                        if ($user->getId()) { ?>
+                            <input type="hidden" name="id" value="<?php echo $user->getId() ?>">
+                        <?php } ?>
+
                         <div class="inline-block-child">
                             <select onchange="zmenaStyluTabulka(<?php echo $user->getId() ?>)" class="form-select-sm form-select" name="rola" aria-label="select">
                                 <option selected disabled>Rola: <?php echo $user->getRole()?></option>

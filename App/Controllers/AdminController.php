@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Type;
 use App\Models\Like;
 use App\Models\User;
@@ -61,6 +62,16 @@ class AdminController extends AControllerBase
             {
                 $article->setAuthor(null);
                 $article->save();
+            }
+
+
+            // komentare pouzivatela nemazem, iba nastavim autora na null
+            $comments = Comment::getAll('user = ?', [$id]);
+
+            foreach ($comments as $comment)
+            {
+                $comment->setUser(null);
+                $comment->save();
             }
 
 

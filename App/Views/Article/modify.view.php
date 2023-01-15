@@ -36,8 +36,8 @@ $types = $data['types'];
 
         <?php if ($article->getImage() && $article->imageExists()) { ?>
             <div class="form-group mt-4 mb-4">
-                <a type="button" href="?c=article&a=deletePhoto&articleId=<?php echo $article->getId() ?>">
-                    <label class="hrubyText clanokZmazanieFotky form-label mb-2" for="clanokFotka">Zmazať aktuálnu fotku</label>
+                <a class="hrubyText clanokZmazanieFotky form-label mb-4" href="?c=article&a=deletePhoto&articleId=<?php echo $article->getId() ?>">
+                    Zmazať aktuálnu fotku
                 </a>
                 <img src="<?php echo $article->getImage() ?>" class="mx-0 mt-0 float-left clanokFotka img-responsive" alt="image">
             </div>
@@ -64,7 +64,7 @@ $types = $data['types'];
             <div class="col-md-8">
                 <input type="submit" name="submit" class="btn btn-outline-dark col btn-lg btn-block" value="Potvrdiť">
                 <span></span>
-                <a type="button" href="?c=article&a=modify&articleId=<?php echo $data['article']->getId() ?>" class="btn btn-default">Obnoviť</a>
+                <a href="?c=article&a=modify&articleId=<?php echo $data['article']->getId() ?>" class="btn btn-default">Obnoviť</a>
             </div>
         </div>
 

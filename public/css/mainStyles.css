@@ -198,8 +198,9 @@ body .center {
     overflow-y: auto;
 }
 
-.clanokZmazanieFotky {
+.clanokZmazanieFotky, .clanokZmazanieFotky:hover {
     color: red;
+    text-decoration: none;
 }
 
 .card .komentarHlavicka {
